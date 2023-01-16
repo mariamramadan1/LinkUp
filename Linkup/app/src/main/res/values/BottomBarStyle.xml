@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="BottomBarStyle">
+        <item name="android:textSize">30sp</item> <!-- menu item text size-->
+        <item name="android:listPreferredItemHeightSmall">20dp</item><!-- menu item height-->
+    </style>
+</resources>
