@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "319733615070",
+    "firebase_url": "https://linkup-a0533-default-rtdb.firebaseio.com",
+    "project_id": "linkup-a0533",
+    "storage_bucket": "linkup-a0533.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:319733615070:android:8e45c8b0c4105cf709754f",
+        "android_client_info": {
+          "package_name": "com.mariamramadan.link_up"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "319733615070-riqd4j2haddt78pf78gt5s3a6dj98qbo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBZxjgQEjLaDwuOMWHQHQTEi-YYZJjzH60"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "319733615070-riqd4j2haddt78pf78gt5s3a6dj98qbo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

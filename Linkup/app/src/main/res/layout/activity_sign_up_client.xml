@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#033172">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_weight="0.75"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Personal Information"
+            android:textColor="@color/white"
+            android:layout_gravity= "start"
+            android:textStyle="bold"
+            android:textSize="18sp"/>
+        <EditText
+            android:id="@+id/FNameClient"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/white"
+            android:hint="@string/FirstName"
+            android:textColorHint="@color/white" />
+        <EditText
+            android:id="@+id/LNameClient"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/white"
+            android:hint="@string/LastName"
+            android:textColorHint="@color/white" />
+        <EditText
+            android:id="@+id/EmailClient"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/white"
+            android:hint="@string/Email"
+            android:textColorHint="@color/white" />
+        <EditText
+            android:id="@+id/PhoneNumClient"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/white"
+            android:hint="@string/PhoneNum"
+            android:textColorHint="@color/white" />
+
+        <EditText
+            android:id="@+id/PassClient"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/white"
+            android:hint="@string/password"
+            android:inputType="textPassword"
+            android:textColorHint="@color/white" />
+
+        <EditText
+            android:id="@+id/ConfPassClient"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/white"
+            android:hint="@string/ConfPassword"
+            android:inputType="textPassword"
+            android:textColorHint="@color/white" />
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:text="I accept the terms and conditions"/>
+
+        <Button
+            android:id="@+id/SubmitClient"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="#38b6ff"
+            android:layout_gravity="center"
+            android:text="SUBMIT" />
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:src="@drawable/link_up_footer" />
+    </LinearLayout>
+
+
+</LinearLayout>
