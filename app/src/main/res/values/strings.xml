@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Link-up</string>
+    <string name="username">username</string>
+    <string name="password">password</string>
+    <string name="Activity_SignUp"><u>Sign Up</u></string>
+    <string name="Activity_Guest"><u>Continue as a Guest</u></string>
+</resources>
