@@ -101,25 +101,22 @@ public class VerifyPhoneNumber extends AppCompatActivity {
                     Toast.makeText(VerifyPhoneNumber.this, "Sign Up Successful", Toast.LENGTH_LONG).show();
                     startActivity(new Intent(VerifyPhoneNumber.this, AccountType.class));
                 }
-//                if (!task.isSuccessful())
-//                {
-//                    startActivity(new Intent(VerifyPhoneNumber.this, ServicesMenu.class));
-//                }
 
             }
         });
     }
-//    @Override
-//    protected void onStart()
-//    {
-//        super.onStart();
-//        FirebaseUser CurrentUser= FirebaseAuth.getInstance().getCurrentUser();
-//        if (CurrentUser != null)
-//        {
-//            startActivity(new Intent(VerifyPhoneNumber.this, AccountType.class));
-//            finish();
-//        }
-//    }
+    @Override
+    protected void onStart()
+    {
+        super.onStart();
+        FirebaseUser CurrentUser= FirebaseAuth.getInstance().getCurrentUser();
+        if (CurrentUser != null)
+        {
+            startActivity(new Intent(VerifyPhoneNumber.this, LoginPage.class));
+            Toast.makeText(VerifyPhoneNumber.this, "This device is already signed up", Toast.LENGTH_LONG).show();
+            finish();
+        }
+    }
     private void SendCode(String Number)
     {
         PhoneAuthOptions options= PhoneAuthOptions.newBuilder(mauth).setPhoneNumber(Number)
