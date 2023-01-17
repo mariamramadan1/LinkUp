@@ -45,7 +45,7 @@ public class LoginPage extends AppCompatActivity
         SignUpLink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent ToAccountType = new Intent(LoginPage.this, AccountType.class);
+                Intent ToAccountType = new Intent(LoginPage.this, VerifyPhoneNumber.class);
                 startActivity(ToAccountType);
             }
 

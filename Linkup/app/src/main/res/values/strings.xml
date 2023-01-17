@@ -8,5 +8,6 @@
     <string name="password">Password</string>
     <string name="ConfPassword">Confirm Password</string>
     <string name="Activity_SignUp"><u>Sign Up</u></string>
+    <string name="CodeVerfication">Verification Code</string>
     <string name="Activity_Guest"><u>Continue as a Guest</u></string>
 </resources>

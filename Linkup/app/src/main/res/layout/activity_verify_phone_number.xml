@@ -14,76 +14,70 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/EnterNum"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Personal Information"
+            android:text="Enter your phone number"
+            android:textColor="@color/white"
+            android:layout_gravity= "start"
+            android:layout_marginLeft="10dp"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:layout_marginBottom="20dp"/>
+
+        <EditText
+            android:id="@+id/PhoneNum"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/white"
+            android:hint="@string/PhoneNum"
+            android:textColorHint="@color/white"
+            android:textColor="@color/white"/>
+
+        <Button
+            android:id="@+id/SendCode"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="30dp"
+            android:backgroundTint="#38b6ff"
+            android:layout_gravity="center"
+            android:text="send code" />
+
+        <TextView
+            android:id="@+id/EnterCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Enter the verification code sent:"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="30dp"
             android:textColor="@color/white"
             android:layout_gravity= "start"
             android:textStyle="bold"
-            android:textSize="18sp"/>
-        <EditText
-            android:id="@+id/FNameClient"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:backgroundTint="@color/white"
-            android:hint="@string/FirstName"
-            android:textColorHint="@color/white" />
-        <EditText
-            android:id="@+id/LNameClient"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:backgroundTint="@color/white"
-            android:hint="@string/LastName"
-            android:textColorHint="@color/white" />
-        <EditText
-            android:id="@+id/EmailClient"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:backgroundTint="@color/white"
-            android:hint="@string/Email"
-            android:textColorHint="@color/white" />
-
+            android:textSize="18sp"
+            android:layout_marginBottom="20dp"/>
 
         <EditText
-            android:id="@+id/PassClient"
+            android:id="@+id/CodeVerification"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:backgroundTint="@color/white"
-            android:hint="@string/password"
-            android:inputType="textPassword"
-            android:textColorHint="@color/white" />
-
-        <EditText
-            android:id="@+id/ConfPassClient"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:backgroundTint="@color/white"
-            android:hint="@string/ConfPassword"
-            android:inputType="textPassword"
-            android:textColorHint="@color/white" />
-        <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:text="I accept the terms and conditions"/>
+            android:hint="@string/CodeVerfication"
+            android:textColorHint="@color/white"
+            android:textColor="@color/white"/>
 
         <Button
-            android:id="@+id/SubmitClient"
+            android:id="@+id/Verify"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:backgroundTint="#38b6ff"
             android:layout_gravity="center"
-            android:text="SUBMIT" />
-
-
-
+            android:text="Verify" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
