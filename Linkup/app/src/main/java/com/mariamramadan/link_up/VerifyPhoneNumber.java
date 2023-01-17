@@ -110,9 +110,12 @@ public class VerifyPhoneNumber extends AppCompatActivity {
     {
         super.onStart();
         FirebaseUser CurrentUser= FirebaseAuth.getInstance().getCurrentUser();
+        CurrentUser= null;
         if (CurrentUser != null)
         {
-            startActivity(new Intent(VerifyPhoneNumber.this, LoginPage.class));
+            Intent i = new Intent(VerifyPhoneNumber.this, LoginPage.class);
+            i.putExtra("Phone", CurrentUser.getPhoneNumber());
+            startActivity(i);
             Toast.makeText(VerifyPhoneNumber.this, "This device is already signed up", Toast.LENGTH_LONG).show();
             finish();
         }
