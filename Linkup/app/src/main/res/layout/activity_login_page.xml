@@ -30,8 +30,9 @@
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:textColor="@color/white"
             android:backgroundTint="@color/white"
-            android:hint="@string/username"
+            android:hint="@string/PhoneNum"
             android:textColorHint="@color/white" />
 
         <EditText
@@ -39,6 +40,7 @@
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:textColor="@color/white"
             android:backgroundTint="@color/white"
             android:hint="@string/password"
             android:inputType="textPassword"
