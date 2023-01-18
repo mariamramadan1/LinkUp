@@ -3,6 +3,7 @@ package com.mariamramadan.link_up;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
@@ -11,6 +12,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
+import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
 
@@ -24,6 +29,7 @@ public class ServicesMenu extends AppCompatActivity {
         actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.linkup_background)));
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_services_menu);
+        NavigationBarView BottomBar= (NavigationBarView) findViewById(R.id.bottomNavigationView);
         GridView menu= findViewById(R.id.ServicesMenu);
         ArrayList<String> Categories = new ArrayList<>();
         Categories.add("Tutoring");
@@ -46,7 +52,31 @@ public class ServicesMenu extends AppCompatActivity {
         Images.add(R.drawable.design);
         CustomGrid adapter=new CustomGrid(ServicesMenu.this, Categories, Images);
         menu.setAdapter(adapter);
+        BottomBar.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener()
+        {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item)
+            {
+                switch(item.getItemId())
+                {
+                    case (R.id.Home):
+                    {
 
+                    }
+                    case (R.id.Bookings):
+                    {
+
+                    }
+                    case (R.id.profile):
+                    {
+                        Intent toProfile= new Intent(ServicesMenu.this, ProfileClient.class);
+                        startActivity(toProfile);
+                    }
+
+                }
+                return true;
+            }
+        });
         menu.setOnItemClickListener(new AdapterView.OnItemClickListener()
         {
 
@@ -60,4 +90,5 @@ public class ServicesMenu extends AppCompatActivity {
         });
 
     }
+
 }

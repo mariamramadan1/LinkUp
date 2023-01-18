@@ -31,6 +31,7 @@ public class LogoScreen extends Activity {
                 else
                 {
                     Intent intent = new Intent(LogoScreen.this, ServicesMenu.class);
+                    intent.putExtra("User", CurrentUser );
                     startActivity(intent);
                     finish();
                 }
