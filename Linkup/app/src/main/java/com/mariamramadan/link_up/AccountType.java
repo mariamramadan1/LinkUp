@@ -22,7 +22,6 @@ public class AccountType extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.linkup_background)));
-
         Button Client = (Button) findViewById(R.id.ClientButton);
         Button ServiceProvider = (Button) findViewById(R.id.ServiceProviderButton);
 
@@ -30,13 +29,16 @@ public class AccountType extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent ClientSignup = new Intent(AccountType.this, SignUpClient.class);
+                ClientSignup.putExtra("Phone", getIntent().getStringExtra("Phone"));
                 startActivity(ClientSignup);
+
             }
         });
         ServiceProvider.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent ServiceProviderSignup = new Intent(AccountType.this, SignUpService.class);
+                ServiceProviderSignup.putExtra("Phone", getIntent().getStringExtra("Phone"));
                 startActivity(ServiceProviderSignup);
             }
         });

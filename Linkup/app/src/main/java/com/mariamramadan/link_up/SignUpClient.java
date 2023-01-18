@@ -92,7 +92,7 @@ public class SignUpClient extends AppCompatActivity {
         lname = (EditText) findViewById(R.id.LNameClient);
         Password = (EditText) findViewById(R.id.PassClient);
         ConfPassword = (EditText) findViewById(R.id.ConfPassClient);
-
+        Log.d("PHONENUMBERClient", getIntent().getStringExtra("Phone"));
 
         submit = (Button) findViewById(R.id.SubmitClient);
         progressDialog = new ProgressDialog(this);
@@ -104,8 +104,7 @@ public class SignUpClient extends AppCompatActivity {
             @Override
             public void onClick(View view)
             {
-                Intent i = getIntent();
-                String PhoneNum= i.getStringExtra("Phone");
+                String PhoneNum= getIntent().getStringExtra("Phone");
                 String inputEmail = email.getText().toString();
                 String inputFname = fname.getText().toString();
                 String inputLname = lname.getText().toString();

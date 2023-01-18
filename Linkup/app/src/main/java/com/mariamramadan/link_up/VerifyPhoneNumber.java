@@ -30,6 +30,7 @@ public class VerifyPhoneNumber extends AppCompatActivity {
     Button SendCode, Verify;
     FirebaseAuth mauth;
     String VerificationID;
+    Bundle B= new Bundle();//
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -56,6 +57,8 @@ public class VerifyPhoneNumber extends AppCompatActivity {
                 {
                     String Number= Phone.getText().toString();
                     SendCode(Number);
+                    //Log.d("PHONENUMBER", Number);
+                    B.putString("Phone", Number); //
                 }
 
             }
@@ -99,7 +102,10 @@ public class VerifyPhoneNumber extends AppCompatActivity {
                 if (task.isSuccessful())
                 {
                     Toast.makeText(VerifyPhoneNumber.this, "Sign Up Successful", Toast.LENGTH_LONG).show();
-                    startActivity(new Intent(VerifyPhoneNumber.this, AccountType.class));
+                    Intent I= new Intent(VerifyPhoneNumber.this, AccountType.class);//
+                    //Log.d("PHONENUMBER", B.getString("Phone"));
+                    I.putExtra("Phone", B.getString("Phone")); //
+                    startActivity(I); //
                 }
 
             }
