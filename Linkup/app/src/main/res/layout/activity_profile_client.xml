@@ -144,10 +144,29 @@
                    android:id="@+id/Finish"
                    android:text="Submit"
                    android:textColor="@color/white"
-                   android:backgroundTint="#38b6ff"/>
-               
+                   android:backgroundTint="#38b6ff"
+                   android:layout_gravity="center_vertical"/>
+
+
                
            </LinearLayout>
+
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottomNavigationView"
+            style="@style/Widget.MaterialComponents.BottomNavigationView.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_gravity="bottom"
+            app:backgroundTint="#033172"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:menu="@menu/bottom_nav_menu"
+            app:theme="@style/BottomBarStyle" />
+
+
 
 
 
