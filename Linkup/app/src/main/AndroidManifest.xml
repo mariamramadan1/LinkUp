@@ -18,6 +18,9 @@
         android:theme="@style/Theme.Linkup"
         tools:targetApi="31">
         <activity
+            android:name=".BookingsClient"
+            android:exported="false" />
+        <activity
             android:name=".ProfileClient"
             android:exported="false">
             <meta-data

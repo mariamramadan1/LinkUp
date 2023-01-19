@@ -123,23 +123,29 @@ public class ProfileClient extends AppCompatActivity
             {
                 switch(item.getItemId())
                 {
-                    case (R.id.Home):
+                    case R.id.Home:
                     {
-                        Intent toHome= new Intent(ProfileClient.this, ServicesMenu.class);
+                        Intent toHome= new Intent(getApplicationContext(), ServicesMenu.class);
                         startActivity(toHome);
+                        overridePendingTransition(0,0);
+                        return true;
                     }
-                    case (R.id.Bookings):
+                    case R.id.Bookings:
                     {
-
+                        Intent toBookings= new Intent(getApplicationContext(), BookingsClient.class);
+                        startActivity(toBookings);
+                        overridePendingTransition(0,0);
+                        return true;
                     }
-                    case (R.id.profile):
+                    case R.id.profile:
                     {
                         //Intent toProfile= new Intent(ProfileClient.this, ProfileClient.class);
                         //startActivity(toProfile);
+                        return true;
                     }
 
                 }
-                return true;
+                return false;
             }
         });
     }
