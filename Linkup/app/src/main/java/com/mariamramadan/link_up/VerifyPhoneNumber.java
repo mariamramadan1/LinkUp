@@ -116,6 +116,7 @@ public class VerifyPhoneNumber extends AppCompatActivity {
     {
         super.onStart();
         FirebaseUser CurrentUser= FirebaseAuth.getInstance().getCurrentUser();
+        CurrentUser = null;
         if (CurrentUser != null)
         {
             Intent i = new Intent(VerifyPhoneNumber.this, ServicesMenu.class);

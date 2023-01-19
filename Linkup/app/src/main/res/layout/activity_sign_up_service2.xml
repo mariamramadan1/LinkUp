@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#033172">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingLeft="50dp"
+        android:paddingRight="50dp"
+        android:layout_weight="0.75"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Choose the service category:"
+            android:textColor="@color/white"
+            android:layout_gravity= "start"
+            android:textStyle="bold"
+            android:textSize="18sp"/>
+
+        <Spinner
+            android:id="@+id/CategoriesSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
+            android:popupBackground="@color/white"
+            android:layout_marginBottom="40dp"
+            android:spinnerMode="dropdown"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Choose the service:"
+            android:textColor="@color/white"
+            android:layout_gravity= "start"
+            android:textStyle="bold"
+            android:textSize="18sp"/>
+
+        <Spinner
+            android:id="@+id/SubCategoriesSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
+            android:popupBackground="@color/white"
+            android:layout_marginBottom="40dp"
+            android:spinnerMode="dropdown"/>
+
+        <Button
+            android:id="@+id/submit"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="#38b6ff"
+            android:layout_marginRight="15dp"
+            android:layout_gravity="center"
+            android:text="submit" />
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:src="@drawable/link_up_footer" />
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -22,52 +22,49 @@
             android:textStyle="bold"
             android:textSize="18sp"/>
         <EditText
-            android:id="@+id/FNameClient"
+            android:id="@+id/FNameService"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:textColor="@color/white"
             android:backgroundTint="@color/white"
             android:hint="@string/FirstName"
             android:textColorHint="@color/white" />
         <EditText
-            android:id="@+id/LNameClient"
+            android:id="@+id/LNameService"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
+            android:textColor="@color/white"
             android:layout_gravity="center"
             android:backgroundTint="@color/white"
             android:hint="@string/LastName"
             android:textColorHint="@color/white" />
         <EditText
-            android:id="@+id/EmailClient"
+            android:id="@+id/EmailService"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:textColor="@color/white"
             android:backgroundTint="@color/white"
             android:hint="@string/Email"
             android:textColorHint="@color/white" />
-        <EditText
-            android:id="@+id/PhoneNumClient"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:backgroundTint="@color/white"
-            android:hint="@string/PhoneNum"
-            android:textColorHint="@color/white" />
 
         <EditText
-            android:id="@+id/PassClient"
+            android:id="@+id/PassService"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:backgroundTint="@color/white"
+            android:textColor="@color/white"
             android:hint="@string/password"
             android:inputType="textPassword"
             android:textColorHint="@color/white" />
 
         <EditText
-            android:id="@+id/ConfPassClient"
+            android:id="@+id/ConfPassService"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
+            android:textColor="@color/white"
             android:layout_gravity="center"
             android:backgroundTint="@color/white"
             android:hint="@string/ConfPassword"
@@ -75,7 +72,7 @@
             android:textColorHint="@color/white" />
 
         <Button
-            android:id="@+id/NextProvider"
+            android:id="@+id/Next"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
