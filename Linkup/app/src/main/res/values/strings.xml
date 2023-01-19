@@ -10,4 +10,14 @@
     <string name="Activity_SignUp"><u>Sign Up</u></string>
     <string name="CodeVerfication">Verification Code</string>
     <string name="Activity_Guest"><u>Continue as a Guest</u></string>
+    <string-array name="Categories">
+        <item>Tutors</item>
+        <item>Cosmetology</item>
+        <item>Arts &amp; Design</item>
+        <item>Tech Freelancers</item>
+        <item>Voulnteering</item>
+        <item>Home Services</item>
+        <item>Therapy</item>
+    </string-array>
+
 </resources>

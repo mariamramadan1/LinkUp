@@ -31,23 +31,6 @@ import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.Map;
 
-//class User {
-//    public String UserID, email, FirstName, LastName, Pass, Type;
-//
-//    public User() {
-//
-//    }
-//
-//    public User(String UserID, String email, String FirstName, String LastName, String Pass) {
-//        this.UserID= UserID;
-//        this.email = email;
-//        this.FirstName = FirstName;
-//        this.LastName = LastName;
-//        this.Pass = Pass;
-//        this.Type= Type;
-//    }
-//
-//}
 public class SignUpClient extends AppCompatActivity {
 
     EditText email, Password, ConfPassword, fname, lname;
