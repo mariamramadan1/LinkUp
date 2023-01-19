@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -31,11 +32,14 @@ class User
 }
 public class ProfileClient extends AppCompatActivity
 {
-    TextView PhoneNum;
-    TextView Fname;
-    TextView Lname;
-    TextView Email;
+    EditText PhoneNum;
+    EditText Fname;
+    EditText Lname;
+    EditText Email;
     String CurrentPhone;
+
+    TextView TopFname;
+    TextView TopLnaame;
 
     FirebaseUser CurrentUser;
     FirebaseAuth mAuth = FirebaseAuth.getInstance();
@@ -46,10 +50,12 @@ public class ProfileClient extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_client);
-        PhoneNum=(TextView) findViewById(R.id.ProfilePhone);
-        Fname =(TextView) findViewById(R.id.ProfileFname);
-        Lname=(TextView) findViewById(R.id.ProfileLname);
-        Email =(TextView) findViewById(R.id.ProfileEmail);
+        PhoneNum=(EditText) findViewById(R.id.edit_phone);
+        Fname =(EditText) findViewById(R.id.edit_first_name);
+        Lname=(EditText) findViewById(R.id.edit_Last_name);
+        TopFname=(TextView) findViewById(R.id.Fname);
+        TopLnaame=(TextView) findViewById(R.id.Lname);
+        Email =(EditText) findViewById(R.id.edit_email);
         CurrentUser= FirebaseAuth.getInstance().getCurrentUser();
         CurrentPhone= CurrentUser.getPhoneNumber();
         //Log.d("PHONENUMBER", CurrentUser.getPhoneNumber());
@@ -81,6 +87,8 @@ public class ProfileClient extends AppCompatActivity
                     if (CurrentPhone.equals(ArrayUsers.get(i).Number))
                     {
                         PhoneNum.setText(ArrayUsers.get(i).Number);
+                        TopFname.setText(ArrayUsers.get(i).Fname);
+                        TopLnaame.setText(ArrayUsers.get(i).Lname);
                         Fname.setText(ArrayUsers.get(i).Fname);
                         Lname.setText(ArrayUsers.get(i).Lname);
                         Email.setText(ArrayUsers.get(i).Email);
@@ -91,4 +99,5 @@ public class ProfileClient extends AppCompatActivity
         });
 
     }
+
 }
