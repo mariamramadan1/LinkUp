@@ -2,16 +2,20 @@ package com.mariamramadan.link_up;
 
 import static android.content.ContentValues.TAG;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentChange;
@@ -60,6 +64,7 @@ public class ProfileClient extends AppCompatActivity
         Email =(EditText) findViewById(R.id.edit_email);
         CurrentUser= FirebaseAuth.getInstance().getCurrentUser();
         CurrentPhone= CurrentUser.getPhoneNumber();
+        NavigationBarView BottomBar= (NavigationBarView) findViewById(R.id.bottomNavigationView);
         //Log.d("PHONENUMBER", CurrentUser.getPhoneNumber());
         Button Finish= (Button) findViewById(R.id.Finish);
         FirebaseFirestore fstore = FirebaseFirestore.getInstance();
@@ -107,6 +112,34 @@ public class ProfileClient extends AppCompatActivity
             public void onClick(View view)
             {
                 finish();
+            }
+        });
+
+
+        BottomBar.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener()
+        {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item)
+            {
+                switch(item.getItemId())
+                {
+                    case (R.id.Home):
+                    {
+                        Intent toHome= new Intent(ProfileClient.this, ServicesMenu.class);
+                        startActivity(toHome);
+                    }
+                    case (R.id.Bookings):
+                    {
+
+                    }
+                    case (R.id.profile):
+                    {
+                        //Intent toProfile= new Intent(ProfileClient.this, ProfileClient.class);
+                        //startActivity(toProfile);
+                    }
+
+                }
+                return true;
             }
         });
     }
