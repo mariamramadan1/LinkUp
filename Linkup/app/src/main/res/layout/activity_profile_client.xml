@@ -141,7 +141,7 @@
                <Button
                    android:layout_width="match_parent"
                    android:layout_height="wrap_content"
-                   android:id="@+id/btn_update"
+                   android:id="@+id/Finish"
                    android:text="Submit"
                    android:textColor="@color/white"
                    android:backgroundTint="#38b6ff"/>

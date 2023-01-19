@@ -7,6 +7,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -59,6 +61,7 @@ public class ProfileClient extends AppCompatActivity
         CurrentUser= FirebaseAuth.getInstance().getCurrentUser();
         CurrentPhone= CurrentUser.getPhoneNumber();
         //Log.d("PHONENUMBER", CurrentUser.getPhoneNumber());
+        Button Finish= (Button) findViewById(R.id.Finish);
         FirebaseFirestore fstore = FirebaseFirestore.getInstance();
         fstore.collection("clients").orderBy("Phone", Query.Direction.ASCENDING).addSnapshotListener
                 (new EventListener<QuerySnapshot>()
@@ -98,6 +101,14 @@ public class ProfileClient extends AppCompatActivity
             }
         });
 
+        Finish.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                finish();
+            }
+        });
     }
 
 }
