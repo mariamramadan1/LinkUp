@@ -22,16 +22,16 @@ public class LogoScreen extends Activity {
             public void run()
             {
                 FirebaseUser CurrentUser= FirebaseAuth.getInstance().getCurrentUser();
-                //CurrentUser = null;
+                CurrentUser = null;
                 if (CurrentUser == null)
                 {
-                    Intent intent = new Intent(LogoScreen.this, VerifyPhoneNumber.class);
+                    Intent intent = new Intent(LogoScreen.this, TokenTrial.class);
                     startActivity(intent);
                     finish();
                 }
                 else
                 {
-                    Intent intent = new Intent(LogoScreen.this, ServicesMenu.class);
+                    Intent intent = new Intent(LogoScreen.this, TokenTrial.class);
                     intent.putExtra("User", CurrentUser );
                     startActivity(intent);
                     finish();

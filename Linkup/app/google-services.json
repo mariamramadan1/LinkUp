@@ -15,6 +15,38 @@
       },
       "oauth_client": [
         {
+          "client_id": "319733615070-d5og864cf2gn1peusegua0df21iemdc1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mariamramadan.link_up",
+            "certificate_hash": "c1a8d0dae4eecd8467b586b1e1c8970b1d767c03"
+          }
+        },
+        {
+          "client_id": "319733615070-e6kdmarsvdv3d1e70p13jb5dvedh4nn1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mariamramadan.link_up",
+            "certificate_hash": "a7d4536412fc4694fd7fb06e603b51596ea4a88d"
+          }
+        },
+        {
+          "client_id": "319733615070-et0efff5fe94d0ovaem8o3u9cp1bvkuq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mariamramadan.link_up",
+            "certificate_hash": "c94062927300fbd9da58c2cf9b18913af71f8365"
+          }
+        },
+        {
+          "client_id": "319733615070-ma68a8potj3q5j0mmkqvcml3rv6g72ra.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mariamramadan.link_up",
+            "certificate_hash": "be44faa1f19196d8c7d2e649749d5d6fee856e1f"
+          }
+        },
+        {
           "client_id": "319733615070-riqd4j2haddt78pf78gt5s3a6dj98qbo.apps.googleusercontent.com",
           "client_type": 3
         }
