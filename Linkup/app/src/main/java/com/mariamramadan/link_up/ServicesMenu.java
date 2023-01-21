@@ -61,20 +61,26 @@ public class ServicesMenu extends AppCompatActivity {
                 {
                     case (R.id.Home):
                     {
+                        return true;
 
                     }
                     case (R.id.Bookings):
                     {
-
+                        Intent toBookings= new Intent(getApplicationContext(), BookingsClient.class);
+                        startActivity(toBookings);
+                        overridePendingTransition(0,0);
+                        return true;
                     }
                     case (R.id.profile):
                     {
-                        Intent toProfile= new Intent(ServicesMenu.this, ProfileClient.class);
+                        Intent toProfile= new Intent(getApplicationContext(), ProfileClient.class);
                         startActivity(toProfile);
+                        overridePendingTransition(0,0);
+                        return true;
                     }
 
                 }
-                return true;
+                return false;
             }
         });
         menu.setOnItemClickListener(new AdapterView.OnItemClickListener()
