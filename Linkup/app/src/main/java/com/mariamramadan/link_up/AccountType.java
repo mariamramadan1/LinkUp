@@ -29,7 +29,7 @@ public class AccountType extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent ClientSignup = new Intent(AccountType.this, SignUpClient.class);
-                ClientSignup.putExtra("Phone", getIntent().getStringExtra("Phone"));
+//                ClientSignup.putExtra("Phone", getIntent().getStringExtra("Phone"));
                 startActivity(ClientSignup);
 
             }

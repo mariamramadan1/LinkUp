@@ -25,7 +25,7 @@ public class LogoScreen extends Activity {
                 CurrentUser = null;
                 if (CurrentUser == null)
                 {
-                    Intent intent = new Intent(LogoScreen.this, VerifyPhoneNumber.class);
+                    Intent intent = new Intent(LogoScreen.this, SignUpService.class);
                     startActivity(intent);
                     finish();
                 }

@@ -23,6 +23,8 @@ import com.google.firebase.auth.PhoneAuthOptions;
 import com.google.firebase.auth.PhoneAuthProvider;
 
 import java.util.concurrent.TimeUnit;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class VerifyPhoneNumber extends AppCompatActivity {
 
@@ -30,7 +32,9 @@ public class VerifyPhoneNumber extends AppCompatActivity {
     Button SendCode, Verify;
     FirebaseAuth mauth;
     String VerificationID;
-    Bundle B= new Bundle();//
+    String PhoneRegex = "^(\\+){1}[2]{1}(010|011|012|015)[0-9]{8}$";
+    Pattern PatternPhone = Pattern.compile(PhoneRegex);
+    Bundle B= new Bundle();
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -43,6 +47,7 @@ public class VerifyPhoneNumber extends AppCompatActivity {
          Verify = findViewById(R.id.Verify);
          mauth= FirebaseAuth.getInstance();
          VerificationID= new String();
+        //check if the phone number is valid
          //Log.i("sendcode", String.valueOf(SendCode));
         SendCode.setOnClickListener(new View.OnClickListener()
         {
@@ -56,9 +61,16 @@ public class VerifyPhoneNumber extends AppCompatActivity {
                 else
                 {
                     String Number= Phone.getText().toString();
-                    SendCode(Number);
-                    //Log.d("PHONENUMBER", Number);
-                    B.putString("Phone", Number); //
+                    if(PatternPhone.matcher(Number).matches())
+                    {
+                        SendCode(Number);
+                        B.putString("Phone", Number);
+                    }
+                    else
+                    {
+                        Phone.requestFocus();
+                        Phone.setError("Enter a valid Phone Number that starts with +2");
+                    }
                 }
 
             }

@@ -30,13 +30,19 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class SignUpService extends AppCompatActivity {
 
     EditText email, Password, ConfPassword, fname, lname;
-    String inputEmail, inputFname, inputLname, inputPass, PhoneNum ;
+    String inputEmail, inputFname, inputLname, inputPass, inputConfPass, PhoneNum ;
     Button Next;
     ProgressDialog progressDialog;
+    String EmailRegex= "^(.+)@(gmail|yahoo|hotmail|aucegypt){1}(.com|.edu|.org|.eg){1}$";
+    Pattern PatternEmail = Pattern.compile(EmailRegex);
+    boolean ValidInput= true;
+    Matcher EmailMatcher;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -47,7 +53,6 @@ public class SignUpService extends AppCompatActivity {
         lname = (EditText) findViewById(R.id.LNameService);
         Password = (EditText) findViewById(R.id.PassService);
         ConfPassword = (EditText) findViewById(R.id.ConfPassService);
-        //Log.d("PHONENUMBERClient", getIntent().getStringExtra("Phone"));
         PhoneNum= getIntent().getStringExtra("Phone");
         Next = (Button) findViewById(R.id.Next);
         progressDialog = new ProgressDialog(this);
@@ -60,14 +65,46 @@ public class SignUpService extends AppCompatActivity {
                 inputFname = fname.getText().toString();
                 inputLname = lname.getText().toString();
                 inputPass = Password.getText().toString();
-                Intent toPage2 = new Intent(SignUpService.this, SignUpService2.class );
-                toPage2.putExtra("FName",inputFname);
-//                Log.d("NAME1", inputFname);
-                toPage2.putExtra("LName",inputLname);
-                toPage2.putExtra("Email",inputEmail);
-                toPage2.putExtra("Password",inputPass);
-                toPage2.putExtra("Phone",PhoneNum);
-                startActivity(toPage2);
+                inputConfPass= ConfPassword.getText().toString();
+                EmailMatcher = PatternEmail.matcher(inputEmail);
+                if (TextUtils.isEmpty(inputFname))
+                {
+                    fname.requestFocus();
+                    fname.setError("Cannot leave this field empty");
+                    ValidInput=false;
+                }
+                if (TextUtils.isEmpty(inputLname))
+                {
+                    lname.requestFocus();
+                    lname.setError("Cannot leave this field empty");
+                    ValidInput=false;
+                }
+                if (!EmailMatcher.matches())
+                {
+                    email.requestFocus();
+                    email.setError("Enter a valid email address");
+                    ValidInput=false;
+                }
+                if (!(inputConfPass.equals(inputPass)) || TextUtils.isEmpty(inputPass) || TextUtils.isEmpty(inputConfPass))
+                {
+                    ConfPassword.requestFocus();
+                    ConfPassword.setError("Passwords do not match");
+                    ValidInput= false;
+                }
+                else
+                {
+                    if (ValidInput)
+                    {
+                        Intent toPage2 = new Intent(SignUpService.this, SignUpService2.class );
+                        toPage2.putExtra("FName",inputFname);
+                        toPage2.putExtra("LName",inputLname);
+                        toPage2.putExtra("Email",inputEmail);
+                        toPage2.putExtra("Password",inputPass);
+                        toPage2.putExtra("Phone",PhoneNum);
+                        startActivity(toPage2);
+                    }
+                }
+
             }
 
         });

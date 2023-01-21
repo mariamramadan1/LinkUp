@@ -30,13 +30,19 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class SignUpClient extends AppCompatActivity {
 
     EditText email, Password, ConfPassword, fname, lname;
     Button submit;
     ProgressDialog progressDialog;
+    String EmailRegex= "^(.+)@(gmail|yahoo|hotmail|aucegypt){1}(.com|.edu|.org|.eg){1}$";
+    Pattern PatternEmail = Pattern.compile(EmailRegex);
+    Matcher EmailMatcher;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
+    boolean ValidInput= true;
 
 
     public void writeNewUser(String PhoneNum, String email, String FirstName, String LastName, String Pass) {
@@ -75,13 +81,11 @@ public class SignUpClient extends AppCompatActivity {
         lname = (EditText) findViewById(R.id.LNameClient);
         Password = (EditText) findViewById(R.id.PassClient);
         ConfPassword = (EditText) findViewById(R.id.ConfPassClient);
-        Log.d("PHONENUMBERClient", getIntent().getStringExtra("Phone"));
 
         submit = (Button) findViewById(R.id.SubmitClient);
         progressDialog = new ProgressDialog(this);
 
 
-//        String inputConfPass = ConfPassword.getText().toString();
 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,8 +96,39 @@ public class SignUpClient extends AppCompatActivity {
                 String inputFname = fname.getText().toString();
                 String inputLname = lname.getText().toString();
                 String inputPass = Password.getText().toString();
-//        String inputConfPass = ConfPassword.getText().toString();
-                writeNewUser(PhoneNum, inputEmail, inputFname, inputLname, inputPass);
+                String inputConfPass = ConfPassword.getText().toString();
+                EmailMatcher = PatternEmail.matcher(inputEmail);
+                if (TextUtils.isEmpty(inputFname))
+                {
+                    fname.requestFocus();
+                    fname.setError("Cannot leave this field empty");
+                    ValidInput=false;
+                }
+                if (TextUtils.isEmpty(inputLname))
+                {
+                    lname.requestFocus();
+                    lname.setError("Cannot leave this field empty");
+                    ValidInput=false;
+                }
+                if (!EmailMatcher.matches())
+                {
+                    email.requestFocus();
+                    email.setError("Enter a valid email address");
+                    ValidInput=false;
+                }
+                if ((inputConfPass != inputPass) || TextUtils.isEmpty(inputPass) || TextUtils.isEmpty(inputConfPass))
+                {
+                    ConfPassword.requestFocus();
+                    ConfPassword.setError("Passwords do not match");
+                    ValidInput=false;
+                }
+                else
+                {
+                    if (ValidInput)
+                    {
+                        writeNewUser(PhoneNum, inputEmail, inputFname, inputLname, inputPass);
+                    }
+                }
 
             }
 
