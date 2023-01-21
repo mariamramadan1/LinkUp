@@ -116,7 +116,7 @@ public class SignUpClient extends AppCompatActivity {
                     email.setError("Enter a valid email address");
                     ValidInput=false;
                 }
-                if ((inputConfPass != inputPass) || TextUtils.isEmpty(inputPass) || TextUtils.isEmpty(inputConfPass))
+                if (!(inputConfPass.equals(inputPass)) || TextUtils.isEmpty(inputPass) || TextUtils.isEmpty(inputConfPass))
                 {
                     ConfPassword.requestFocus();
                     ConfPassword.setError("Passwords do not match");
