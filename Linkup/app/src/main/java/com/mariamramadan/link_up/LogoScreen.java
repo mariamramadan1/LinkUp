@@ -25,13 +25,13 @@ public class LogoScreen extends Activity {
                 CurrentUser = null;
                 if (CurrentUser == null)
                 {
-                    Intent intent = new Intent(LogoScreen.this, TokenTrial.class);
+                    Intent intent = new Intent(LogoScreen.this, VerifyPhoneNumber.class);
                     startActivity(intent);
                     finish();
                 }
                 else
                 {
-                    Intent intent = new Intent(LogoScreen.this, TokenTrial.class);
+                    Intent intent = new Intent(LogoScreen.this, ServicesMenu.class);
                     intent.putExtra("User", CurrentUser );
                     startActivity(intent);
                     finish();
