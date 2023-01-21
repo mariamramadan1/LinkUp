@@ -16,6 +16,7 @@ import android.widget.GridView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.util.ArrayList;
 
@@ -52,6 +53,10 @@ public class ServicesMenu extends AppCompatActivity {
         Images.add(R.drawable.design);
         CustomGrid adapter=new CustomGrid(ServicesMenu.this, Categories, Images);
         menu.setAdapter(adapter);
+
+//        FirebaseMessaging firebaseMessaging= FirebaseMessaging.getInstance();
+//        firebaseMessaging.subscribeToTopic("new_user_forms");
+
         BottomBar.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener()
         {
             @Override
@@ -89,11 +94,12 @@ public class ServicesMenu extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id)
             {
-                Intent ToUniversityPage = new Intent(ServicesMenu.this, ProfessionMenu.class);                          //if an item is clicked, go the activity 3
-                ToUniversityPage.putExtra("category", Categories.get(position));                                                             //name, domain, and url of the clicked university will be passed as args with the intent
-                startActivity(ToUniversityPage);
+                Intent ToProfession = new Intent(ServicesMenu.this, ProfessionMenu.class);                          //if an item is clicked, go the activity 3
+                ToProfession.putExtra("category", Categories.get(position));                                                             //name, domain, and url of the clicked university will be passed as args with the intent
+                startActivity(ToProfession);
             }
         });
+
 
     }
 

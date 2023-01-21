@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -15,14 +16,15 @@ import android.widget.GridView;
 import java.util.ArrayList;
 
 public class ProfessionMenu extends AppCompatActivity {
+    String Category;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profession_menu);
         GridView menu= findViewById(R.id.ProfessionMenu);
-        String Category = getIntent().getStringExtra("category");
-        ArrayList<String> Profession = new ArrayList<>();
+        Category = getIntent().getStringExtra("category");
+        ArrayList<String>  Profession = new ArrayList<>();
         ArrayList<Integer> ProfessionImage = new ArrayList<>();
 
         ActionBar actionBar = getSupportActionBar();
@@ -72,7 +74,7 @@ public class ProfessionMenu extends AppCompatActivity {
 
                 break;
             case "Tech Freelancers":
-                Profession.add("Application\nDeveloper");
+                Profession.add("Application Developer");
                 Profession.add("Website\nDeveloper");
                 Profession.add("Software\nEngineer");
                 Profession.add("Game\nDesign");
@@ -111,9 +113,12 @@ public class ProfessionMenu extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id)
             {
-                Intent ToUniversityPage = new Intent(ProfessionMenu.this, ProfessionMenu.class);                          //if an item is clicked, go the activity 3
-                ToUniversityPage.putExtra("profession", Profession.get(position));                                                             //name, domain, and url of the clicked university will be passed as args with the intent
-                startActivity(ToUniversityPage);
+                Intent ToWorkerList = new Intent(ProfessionMenu.this, WorkerListPage.class);
+                ToWorkerList.putExtra("Category", Category);
+//                Log.d("cat", Category);
+                ToWorkerList.putExtra("SubCategory", Profession.get(position));
+//                Log.d("sub", Profession.get(position));
+                startActivity(ToWorkerList);
             }
         });
     }
