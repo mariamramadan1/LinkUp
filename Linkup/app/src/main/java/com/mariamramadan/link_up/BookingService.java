@@ -11,12 +11,12 @@ import android.view.MenuItem;
 
 import com.google.android.material.navigation.NavigationBarView;
 
-public class HomeServiceProv extends AppCompatActivity {
+public class BookingService extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home_service_prov);
+        setContentView(R.layout.activity_booking_service);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.linkup_background)));
@@ -30,16 +30,16 @@ public class HomeServiceProv extends AppCompatActivity {
                 {
                     case R.id.Home:
                     {
-                        //Intent toHome= new Intent(getApplicationContext(), ServicesMenu.class);
-                        //startActivity(toHome);
-                        //overridePendingTransition(0,0);
+                        Intent toHome= new Intent(getApplicationContext(), HomeServiceProv.class);
+                        startActivity(toHome);
+                        overridePendingTransition(0,0);
                         return true;
                     }
                     case R.id.Bookings:
                     {
-                        Intent toBookings= new Intent(getApplicationContext(), BookingService.class);
-                        startActivity(toBookings);
-                        overridePendingTransition(0,0);
+                        //Intent toBookings= new Intent(getApplicationContext(), BookingsClient.class);
+                        //startActivity(toBookings);
+                        //overridePendingTransition(0,0);
                         return true;
                     }
                     case R.id.profile:
