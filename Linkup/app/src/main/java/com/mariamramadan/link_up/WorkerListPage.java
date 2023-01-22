@@ -102,6 +102,7 @@ public class WorkerListPage extends AppCompatActivity
                                 ToProfileServiceClientView.putExtra("Number", WorkerInfo.get(i).Number);
                                 ToProfileServiceClientView.putExtra("Category", WorkerInfo.get(i).Category);
                                 ToProfileServiceClientView.putExtra("SubCategory", WorkerInfo.get(i).SubCategory);
+                                startActivity(ToProfileServiceClientView);
                             }
 
                         });
