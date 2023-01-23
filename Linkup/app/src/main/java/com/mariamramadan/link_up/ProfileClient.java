@@ -64,9 +64,16 @@ public class ProfileClient extends AppCompatActivity
         Email =(EditText) findViewById(R.id.edit_email);
         CurrentUser= FirebaseAuth.getInstance().getCurrentUser();
         CurrentPhone= CurrentUser.getPhoneNumber();
+
+        PhoneNum.setEnabled(false);
+        Fname.setEnabled(false);
+        Lname.setEnabled(false);
+        Email.setEnabled(false);
+    
+
         NavigationBarView BottomBar= (NavigationBarView) findViewById(R.id.bottomNavigationView);
         //Log.d("PHONENUMBER", CurrentUser.getPhoneNumber());
-        Button Finish= (Button) findViewById(R.id.Finish);
+        //Button Finish= (Button) findViewById(R.id.Finish);
         FirebaseFirestore fstore = FirebaseFirestore.getInstance();
         fstore.collection("clients").orderBy("Phone", Query.Direction.ASCENDING).addSnapshotListener
                 (new EventListener<QuerySnapshot>()
@@ -106,14 +113,14 @@ public class ProfileClient extends AppCompatActivity
             }
         });
 
-        Finish.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View view)
-            {
-                finish();
-            }
-        });
+//        Finish.setOnClickListener(new View.OnClickListener()
+//        {
+//            @Override
+//            public void onClick(View view)
+//            {
+//                finish();
+//            }
+//        });
 
 
         BottomBar.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener()
@@ -148,6 +155,16 @@ public class ProfileClient extends AppCompatActivity
                 return false;
             }
         });
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                this.finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 }

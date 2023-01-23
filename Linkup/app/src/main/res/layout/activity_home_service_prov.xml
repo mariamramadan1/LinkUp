@@ -8,16 +8,16 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.25">
-
+        android:layout_height="match_parent"
+        android:layout_weight="0.25"
+        android:layout_gravity="center_horizontal">
 
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottomNavigationView"
             style="@style/Widget.MaterialComponents.BottomNavigationView.Colored"
             android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             app:backgroundTint="#033172"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -28,6 +28,7 @@
             app:theme="@style/BottomBarStyle" />
 
     </LinearLayout>
+
 
 </LinearLayout>
 

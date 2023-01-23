@@ -6,13 +6,14 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -27,52 +28,45 @@ import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
-class Offers
-{
-    String clientName;
-    String serviceName;
-    String servicePhone;
-    String clientPhone;
-    String TimeStamp;
-    String status;
 
-}
-public class BookingsClient extends AppCompatActivity {
+public class BookingService extends AppCompatActivity {
 
-
-    TextView ServicePhone;
-
-    TextView ServiceName;
+    TextView ClientName;
+    TextView ClientPhone;
     TextView Status;
+
+    Button Acceptoffer;
+    Button Declineoffer;
 
     FirebaseUser CurrentUser;
     String CurrentPhone;
 
-
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_worker_list_page);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.linkup_background)));
         NavigationBarView BottomBar= (NavigationBarView) findViewById(R.id.bottomNavigationView);
+        final ArrayList<BookingsList> InfoArray = new ArrayList<BookingsList>();
+        ListView ClientsOffers = (ListView) findViewById(R.id.WorkerListView);
+
+//        Acceptoffer=(Button)findViewById(R.id.AcceptOffer);
+//        Declineoffer=(Button)findViewById(R.id)
         CurrentUser= FirebaseAuth.getInstance().getCurrentUser();
         CurrentPhone= CurrentUser.getPhoneNumber();
 //        ServiceName=(TextView)findViewById(R.id.ServiceName);
 //        ClientName=(TextView)findViewById(R.id.ClientName);
 //        ClientPhone=(TextView)findViewById(R.id.ClientPhone);
 //        ServicePhone=(TextView)findViewById(R.id.ServicePhone);
-//        TimeStamp=(TextView)findViewById(R.id.TimeStamp);
-//        Status=(TextView)findViewById(R.id.Status);
-        final ArrayList<BookingsList> InfoArray = new ArrayList<BookingsList>();
-        ListView ClientsOffers = (ListView) findViewById(R.id.WorkerListView);
+        //TimeStamp=(TextView)findViewById(R.id.TimeStamp);
+        //Status=(TextView)findViewById(R.id.Status);
         BookingsAdapter BookingsArrayAdapter = new BookingsAdapter(this, InfoArray);
 
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.linkup_background)));
         FirebaseFirestore fstore = FirebaseFirestore.getInstance();
-        fstore.collection("Offers").orderBy("ClientPhone", Query.Direction.ASCENDING).addSnapshotListener
+        fstore.collection("Offers").orderBy("ServicePhone", Query.Direction.ASCENDING).addSnapshotListener
                 (new EventListener<QuerySnapshot>()
                 {
                     @Override
@@ -88,7 +82,7 @@ public class BookingsClient extends AppCompatActivity {
                         for (DocumentChange dc: value.getDocumentChanges())
                         {
                             Offers offer= new Offers();
-                            offer.serviceName= (String) dc.getDocument().get("ServiceName");
+                            offer.clientName= (String) dc.getDocument().get("ClientName");
                             offer.clientPhone= (String) dc.getDocument().get("ClientPhone");
                             offer.servicePhone= (String) dc.getDocument().get("ServicePhone");
                             offer.status=(String) dc.getDocument().get("Status");
@@ -97,32 +91,17 @@ public class BookingsClient extends AppCompatActivity {
 
                         for (int i=0; i < OffersArray.size(); i++)
                         {
-                            if (CurrentPhone.equals(OffersArray.get(i).clientPhone))
+                            if (CurrentPhone.equals(OffersArray.get(i).servicePhone))
                             {
                                 OffersInfoArray.add(OffersArray.get(i));
                                 InfoArray.add(new BookingsList(R.drawable.tutoring,
-                                        OffersArray.get(i).serviceName ,OffersArray.get(i).servicePhone, OffersArray.get(i).status));
+                                        OffersArray.get(i).clientName ,OffersArray.get(i).clientPhone, OffersArray.get(i).status));
                             }
                         }
 
                         ClientsOffers.setAdapter(BookingsArrayAdapter);
-
                     }
                 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -135,7 +114,7 @@ public class BookingsClient extends AppCompatActivity {
                 {
                     case R.id.Home:
                     {
-                        Intent toHome= new Intent(getApplicationContext(), ServicesMenu.class);
+                        Intent toHome= new Intent(getApplicationContext(), HomeServiceProv.class);
                         startActivity(toHome);
                         overridePendingTransition(0,0);
                         return true;
@@ -149,7 +128,7 @@ public class BookingsClient extends AppCompatActivity {
                     }
                     case R.id.profile:
                     {
-                        Intent toProfile= new Intent(getApplicationContext(), ProfileClient.class);
+                        Intent toProfile= new Intent(getApplicationContext(), ProfileService.class);
                         startActivity(toProfile);
                         overridePendingTransition(0,0);
                         return true;

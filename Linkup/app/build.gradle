@@ -46,7 +46,7 @@ dependencies {
     //implementation 'com.google.firebase:firebase-messaging'
     implementation 'com.google.firebase:firebase-core:16.0.8'
     implementation 'com.google.firebase:firebase-messaging:23.1.1'
-
+    implementation 'androidx.recyclerview:recyclerview:1.2.1'
 
 
 }

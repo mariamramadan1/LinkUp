@@ -13,16 +13,27 @@
         tools:layout_editor_absoluteX="1dp"
         tools:layout_editor_absoluteY="1dp"
         android:numColumns="3"/>
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigationView"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="75dp"
-        app:theme="@style/BottomBarStyle"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/bottom_nav_menu"
-        app:backgroundTint="#033172"
-        style="@style/Widget.MaterialComponents.BottomNavigationView.Colored"/>
+        android:layout_height="match_parent"
+        android:layout_weight="0.25"
+        android:layout_gravity="center_horizontal">
+
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottomNavigationView"
+            style="@style/Widget.MaterialComponents.BottomNavigationView.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            app:backgroundTint="#033172"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:menu="@menu/bottom_nav_menu"
+            app:theme="@style/BottomBarStyle" />
+
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

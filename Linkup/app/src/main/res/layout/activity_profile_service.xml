@@ -7,7 +7,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="100dp"
         android:padding="10dp">
 
         <ImageView
@@ -123,6 +123,45 @@
 
 
         </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:hint="Profession">
+
+
+            <EditText
+                android:id="@+id/subcategory"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/work_24"
+                android:drawablePadding="10dp"
+                android:text="Subcategory"
+                android:textColor="@color/black"/>
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:hint="Rating">
+
+
+            <TextView
+                android:id="@+id/Rating"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/star_24"
+                android:drawablePadding="10dp"
+                android:text="Rating"
+                android:textColor="@color/black"/>
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
 <!--        <Button-->
 <!--            android:id="@+id/Finish"-->
 <!--            android:layout_width="match_parent"-->
@@ -160,6 +199,7 @@
             app:theme="@style/BottomBarStyle" />
 
     </LinearLayout>
+
 
 
 
