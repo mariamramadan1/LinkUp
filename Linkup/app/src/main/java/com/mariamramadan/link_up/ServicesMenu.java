@@ -1,38 +1,61 @@
 package com.mariamramadan.link_up;
 
+import static android.content.ContentValues.TAG;
+
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.GridView;
+import android.widget.ImageButton;
+import android.widget.ListView;
+import android.widget.SearchView;
+import android.widget.Toast;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
-import com.google.android.material.navigation.NavigationView;
-import com.google.firebase.messaging.FirebaseMessaging;
+import com.google.firebase.firestore.DocumentChange;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class ServicesMenu extends AppCompatActivity {
+
+    ArrayList<String> Categories = new ArrayList<>();
+    ArrayList<Integer> Images = new ArrayList<>();
+    ImageButton SearchButton;
+    CustomWorkerAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_services_menu);
+        SearchButton= (ImageButton) findViewById(R.id.SearchButton);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.linkup_background)));
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_services_menu);
         NavigationBarView BottomBar= (NavigationBarView) findViewById(R.id.bottomNavigationView);
+
         GridView menu= findViewById(R.id.ServicesMenu);
-        ArrayList<String> Categories = new ArrayList<>();
+
         Categories.add("Tutoring");
         Categories.add("Cosmetics");
         Categories.add("Home Services");
@@ -41,8 +64,6 @@ public class ServicesMenu extends AppCompatActivity {
         Categories.add("Art & Design");
         Categories.add("Therapy");
 
-
-        ArrayList<Integer> Images = new ArrayList<>();
 
         Images.add(R.drawable.tutoring);
         Images.add(R.drawable.cosmetology);
@@ -97,6 +118,14 @@ public class ServicesMenu extends AppCompatActivity {
                 Intent ToProfession = new Intent(ServicesMenu.this, ProfessionMenu.class);                          //if an item is clicked, go the activity 3
                 ToProfession.putExtra("category", Categories.get(position));                                                             //name, domain, and url of the clicked university will be passed as args with the intent
                 startActivity(ToProfession);
+            }
+        });
+
+        SearchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent ToSearch= new Intent(ServicesMenu.this, Search.class);
+                startActivity(ToSearch);
             }
         });
 

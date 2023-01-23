@@ -19,9 +19,10 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-class Worker
+class Worker implements Serializable
 {
     String Category;
     String Email;
@@ -82,7 +83,7 @@ public class WorkerListPage extends AppCompatActivity
 //                                Log.d("fn", WorkersArray.get(i).Fname + " " + WorkersArray.get(i).Lname);
                                 WorkerInfo.add(WorkersArray.get(i));
                                 FinalWorkersList.add(new CustomWorkerList(R.drawable.tutoring,
-                                        WorkersArray.get(i).Fname + " "+ WorkersArray.get(i).Lname, "0"));
+                                        WorkersArray.get(i).Fname + " "+ WorkersArray.get(i).Lname, "0", SubCategory));
                             }
                         }
 //                        Log.d("workers", String.valueOf(FinalWorkersList));

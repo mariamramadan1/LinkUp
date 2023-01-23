@@ -132,7 +132,8 @@ public class ProfileServiceClientView extends AppCompatActivity
         EmailText.setText(Email);
         BookWith.setText("Book with " + Fname);
 
-        Book.setOnClickListener(new View.OnClickListener() {
+        Book.setOnClickListener(new View.OnClickListener()
+        {
             @Override
             public void onClick(View view)
             {
