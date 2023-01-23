@@ -46,6 +46,8 @@
                             android:textColor="@android:color/black"
                             android:layout_weight="1"
                             android:textSize="12sp"/>
+
+
                 </LinearLayout>
                 <ImageView
                     android:id="@+id/ClientImg"

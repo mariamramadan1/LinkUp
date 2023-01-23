@@ -7,11 +7,13 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -33,9 +35,13 @@ public class BookingService extends AppCompatActivity {
     TextView ClientPhone;
     TextView Status;
 
+    Button Acceptoffer;
+    Button Declineoffer;
+
     FirebaseUser CurrentUser;
     String CurrentPhone;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +53,8 @@ public class BookingService extends AppCompatActivity {
         final ArrayList<BookingsList> InfoArray = new ArrayList<BookingsList>();
         ListView ClientsOffers = (ListView) findViewById(R.id.WorkerListView);
 
+//        Acceptoffer=(Button)findViewById(R.id.AcceptOffer);
+//        Declineoffer=(Button)findViewById(R.id)
         CurrentUser= FirebaseAuth.getInstance().getCurrentUser();
         CurrentPhone= CurrentUser.getPhoneNumber();
 //        ServiceName=(TextView)findViewById(R.id.ServiceName);
