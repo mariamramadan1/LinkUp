@@ -129,6 +129,9 @@ public class WorkerListPage extends AppCompatActivity
                 {
                     case (R.id.Home):
                     {
+                        Intent toHome= new Intent(getApplicationContext(), ServicesMenu.class);
+                        startActivity(toHome);
+                        overridePendingTransition(0,0);
                         return true;
 
                     }

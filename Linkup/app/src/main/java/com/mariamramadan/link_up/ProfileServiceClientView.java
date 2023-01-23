@@ -166,21 +166,21 @@ public class ProfileServiceClientView extends AppCompatActivity
                 {
                     case R.id.Home:
                     {
-                        Intent toHome= new Intent(getApplicationContext(), HomeServiceProv.class);
+                        Intent toHome= new Intent(getApplicationContext(), ServicesMenu.class);
                         startActivity(toHome);
                         overridePendingTransition(0,0);
                         return true;
                     }
                     case R.id.Bookings:
                     {
-                        //Intent toBookings= new Intent(getApplicationContext(), BookingsClient.class);
-                        //startActivity(toBookings);
-                        //overridePendingTransition(0,0);
+                        Intent toBookings= new Intent(getApplicationContext(), BookingsClient.class);
+                        startActivity(toBookings);
+                        overridePendingTransition(0,0);
                         return true;
                     }
                     case R.id.profile:
                     {
-                        Intent toProfile= new Intent(getApplicationContext(), ProfileService.class);
+                        Intent toProfile= new Intent(getApplicationContext(), ProfileClient.class);
                         startActivity(toProfile);
                         overridePendingTransition(0,0);
                         return true;

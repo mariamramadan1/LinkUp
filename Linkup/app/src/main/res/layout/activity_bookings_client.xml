@@ -58,14 +58,7 @@
                     android:layout_gravity="center"
                     android:src="@drawable/person_24"/>
 
-
-
         </LinearLayout>
-
-
-
-
-
 
 
 </LinearLayout>
