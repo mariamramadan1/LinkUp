@@ -31,8 +31,5 @@ public class CustomWorkerList extends Throwable {
         return Rating;
     }
 
-<<<<<<< HEAD
     public String getSubCategory(){ return SubCategory; }
-=======
->>>>>>> 7aae59e30e412d326af6a84c1d37387339040105
 }

@@ -4,12 +4,15 @@ import static android.content.ContentValues.TAG;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -17,6 +20,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentChange;
@@ -43,7 +47,7 @@ public class ProfileServiceClientView extends AppCompatActivity
     Date date = new Date();
     Button Book;
 
-    public void MakeOffer(String PhoneService)
+    public void MakeOffer(String PhoneService, String FNservice, String LNService)
     {
         db.collection("clients").orderBy("Phone", Query.Direction.ASCENDING).addSnapshotListener
                 (new EventListener<QuerySnapshot>()
@@ -74,14 +78,16 @@ public class ProfileServiceClientView extends AppCompatActivity
                             if (ClientPhone.equals(ArrayUsers.get(i).Number))
                             {
                                 CurrentName = ArrayUsers.get(i).Fname + " " + ArrayUsers.get(i).Lname;
-
                             }
                         }
 
                         Map<String, Object> user = new HashMap<>();
                         user.put("ClientName", CurrentName);
                         user.put("ClientPhone", ClientPhone);
+                        user.put("ServiceName", FNservice+ " " + LNService);
                         user.put("ServicePhone", PhoneService);
+                        user.put("Status", "0");
+
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
                         {
                             user.put("TimeStamp", String.valueOf(LocalDateTime.now()));
@@ -113,6 +119,9 @@ public class ProfileServiceClientView extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_service_client_view);
+
+        NavigationBarView BottomBar= (NavigationBarView) findViewById(R.id.bottomNavigationView);
+
         Book= (Button) findViewById(R.id.Book);
         Intent fromWorkerList = getIntent();
         Fname=fromWorkerList.getStringExtra("FirstName");
@@ -127,7 +136,12 @@ public class ProfileServiceClientView extends AppCompatActivity
         EmailText= findViewById(R.id.Email);
         BookWith= findViewById(R.id.Bookwith);
 
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.linkup_background)));
+
         NameText.setText(Fname + " " + Lname);
+        //String[] SplitSubCategory = SubCategory.split(" ");
         ProfessionText.setText(SubCategory);
         EmailText.setText(Email);
         BookWith.setText("Book with " + Fname);
@@ -138,11 +152,54 @@ public class ProfileServiceClientView extends AppCompatActivity
             public void onClick(View view)
             {
 
-                MakeOffer(Number);
+                MakeOffer(Number, Fname, Lname);
 
             }
         });
 
+        BottomBar.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener()
+        {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item)
+            {
+                switch(item.getItemId())
+                {
+                    case R.id.Home:
+                    {
+                        Intent toHome= new Intent(getApplicationContext(), HomeServiceProv.class);
+                        startActivity(toHome);
+                        overridePendingTransition(0,0);
+                        return true;
+                    }
+                    case R.id.Bookings:
+                    {
+                        //Intent toBookings= new Intent(getApplicationContext(), BookingsClient.class);
+                        //startActivity(toBookings);
+                        //overridePendingTransition(0,0);
+                        return true;
+                    }
+                    case R.id.profile:
+                    {
+                        Intent toProfile= new Intent(getApplicationContext(), ProfileService.class);
+                        startActivity(toProfile);
+                        overridePendingTransition(0,0);
+                        return true;
+                    }
 
+                }
+                return false;
+            }
+        });
+
+
+    }
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                this.finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

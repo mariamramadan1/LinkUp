@@ -110,22 +110,6 @@ public class BookingsClient extends AppCompatActivity {
                     }
                 });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         BottomBar.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener()
         {
             @Override
@@ -159,5 +143,15 @@ public class BookingsClient extends AppCompatActivity {
                 return false;
             }
         });
+
     }
+        @Override
+        public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+            switch (item.getItemId()) {
+                case android.R.id.home:
+                    finish();
+                    return true;
+            }
+            return super.onOptionsItemSelected(item);
+        }
 }

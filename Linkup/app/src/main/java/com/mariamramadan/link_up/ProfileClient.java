@@ -4,9 +4,11 @@ import static android.content.ContentValues.TAG;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -69,6 +71,10 @@ public class ProfileClient extends AppCompatActivity
         Fname.setEnabled(false);
         Lname.setEnabled(false);
         Email.setEnabled(false);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.linkup_background)));
     
 
         NavigationBarView BottomBar= (NavigationBarView) findViewById(R.id.bottomNavigationView);
@@ -166,5 +172,6 @@ public class ProfileClient extends AppCompatActivity
         }
         return super.onOptionsItemSelected(item);
     }
+
 
 }

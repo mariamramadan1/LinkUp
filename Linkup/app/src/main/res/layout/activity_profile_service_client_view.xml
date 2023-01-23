@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -11,39 +12,39 @@
         android:gravity="center"
         android:padding="20dp">
 
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/Name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="38dp"
-                android:gravity="center"
-                android:textColor="#033172"
-                android:textSize="20sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <ImageView
-                android:id="@+id/image_profile"
-                android:layout_width="89dp"
-                android:layout_height="91dp"
-                android:layout_gravity="bottom"
-                android:src="@drawable/person_24" />
-            <TextView
-                android:id="@+id/Profession"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textStyle="bold"/>
-        </LinearLayout>
+        <ImageView
+            android:id="@+id/image_profile"
+            android:layout_width="113dp"
+            android:layout_height="91dp"
+            android:src="@drawable/person_24" />
 
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/Name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textAlignment="center"
+            app:autoSizeTextType="uniform"
+            android:textColor="#033172"
+            android:textSize="20sp" />
+
+
+        <TextView
+            android:id="@+id/Profession"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#033172"
+            android:textAlignment="center"
+            android:gravity="center"
+            app:autoSizeTextType="uniform"
+            android:textStyle="bold|italic" />
+        </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -51,11 +52,10 @@
         android:orientation="vertical"
         android:padding="16dp">
 
-
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="#033172"
             android:text="Contact Information:"
             android:textStyle="bold"/>
 
@@ -77,13 +77,16 @@
                 android:id="@+id/Bookwith"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="#033172"
                 android:gravity="left"
                 android:textStyle="bold"/>
             <Button
                 android:id="@+id/Book"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="right"
+                android:layout_marginTop="60dp"
+                android:layout_marginLeft="20dp"
+                android:layout_centerHorizontal="true"
                 android:backgroundTint="#38b6ff"
                 android:text="Book"
                 android:textColor="@color/white" />
@@ -95,7 +98,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="100dp"
         android:layout_weight="0.25"
         android:layout_gravity="center_horizontal">
 
@@ -115,9 +118,5 @@
             app:theme="@style/BottomBarStyle" />
 
     </LinearLayout>
-
-
-
-
 
 </LinearLayout>

@@ -34,21 +34,13 @@
     <GridView
         android:id="@+id/ServicesMenu"
         android:layout_width="match_parent"
-<<<<<<< HEAD
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/SearchLayout"
         android:numColumns="2"
         app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="1dp" />
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigationView"
-=======
-        android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="1dp"
-        android:numColumns="2"/>
+
     <LinearLayout
->>>>>>> 7aae59e30e412d326af6a84c1d37387339040105
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="0.25"

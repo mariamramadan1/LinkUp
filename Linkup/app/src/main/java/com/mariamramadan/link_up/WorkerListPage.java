@@ -2,16 +2,21 @@ package com.mariamramadan.link_up;
 
 import static android.content.ContentValues.TAG;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -49,6 +54,11 @@ public class WorkerListPage extends AppCompatActivity
         String Category= getIntent().getStringExtra("Category");
         String SubCategory= getIntent().getStringExtra("SubCategory");
         FirebaseFirestore fstore = FirebaseFirestore.getInstance();
+        NavigationBarView BottomBar= (NavigationBarView) findViewById(R.id.bottomNavigationView);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.linkup_background)));
+
         fstore.collection("service providers").orderBy("Phone", Query.Direction.ASCENDING).addSnapshotListener
                 (new EventListener<QuerySnapshot>()
                 {
@@ -110,6 +120,47 @@ public class WorkerListPage extends AppCompatActivity
 
                     }
                 });
+        BottomBar.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener()
+        {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item)
+            {
+                switch(item.getItemId())
+                {
+                    case (R.id.Home):
+                    {
+                        return true;
 
+                    }
+                    case (R.id.Bookings):
+                    {
+                        Intent toBookings= new Intent(getApplicationContext(), BookingsClient.class);
+                        startActivity(toBookings);
+                        overridePendingTransition(0,0);
+                        return true;
+                    }
+                    case (R.id.profile):
+                    {
+                        Intent toProfile= new Intent(getApplicationContext(), ProfileClient.class);
+                        startActivity(toProfile);
+                        overridePendingTransition(0,0);
+                        return true;
+                    }
+
+                }
+                return false;
+            }
+        });
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                this.finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
