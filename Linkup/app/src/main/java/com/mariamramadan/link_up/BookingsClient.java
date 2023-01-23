@@ -4,12 +4,16 @@ import static android.content.ContentValues.TAG;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationBarView;
@@ -35,10 +39,9 @@ class Offers
 }
 public class BookingsClient extends AppCompatActivity {
 
-    TextView ClientName;
-    TextView ClientPhone;
+
     TextView ServicePhone;
-    TextView TimeStamp;
+
     TextView ServiceName;
     TextView Status;
 
@@ -48,18 +51,26 @@ public class BookingsClient extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_bookings_client);
+        setContentView(R.layout.activity_worker_list_page);
         NavigationBarView BottomBar= (NavigationBarView) findViewById(R.id.bottomNavigationView);
         CurrentUser= FirebaseAuth.getInstance().getCurrentUser();
         CurrentPhone= CurrentUser.getPhoneNumber();
-        ServiceName=(TextView)findViewById(R.id.ServiceName);
-        ClientName=(TextView)findViewById(R.id.ClientName);
-        ClientPhone=(TextView)findViewById(R.id.ClientPhone);
-        ServicePhone=(TextView)findViewById(R.id.ServicePhone);
-        TimeStamp=(TextView)findViewById(R.id.TimeStamp);
-        Status=(TextView)findViewById(R.id.Status);
+//        ServiceName=(TextView)findViewById(R.id.ServiceName);
+//        ClientName=(TextView)findViewById(R.id.ClientName);
+//        ClientPhone=(TextView)findViewById(R.id.ClientPhone);
+//        ServicePhone=(TextView)findViewById(R.id.ServicePhone);
+//        TimeStamp=(TextView)findViewById(R.id.TimeStamp);
+//        Status=(TextView)findViewById(R.id.Status);
+        final ArrayList<BookingsList> InfoArray = new ArrayList<BookingsList>();
+        ListView ClientsOffers = (ListView) findViewById(R.id.WorkerListView);
+        BookingsAdapter BookingsArrayAdapter = new BookingsAdapter(this, InfoArray);
 
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.linkup_background)));
         FirebaseFirestore fstore = FirebaseFirestore.getInstance();
         fstore.collection("Offers").orderBy("ClientPhone", Query.Direction.ASCENDING).addSnapshotListener
                 (new EventListener<QuerySnapshot>()
@@ -68,6 +79,7 @@ public class BookingsClient extends AppCompatActivity {
                     public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error)
                     {
                         ArrayList<Offers> OffersArray = new ArrayList<>();
+                        ArrayList<Offers> OffersInfoArray = new ArrayList<>();
                         if(error != null)
                         {
                             Log.e(TAG, "Firebase Error");
@@ -76,11 +88,9 @@ public class BookingsClient extends AppCompatActivity {
                         for (DocumentChange dc: value.getDocumentChanges())
                         {
                             Offers offer= new Offers();
-                            offer.clientName= (String) dc.getDocument().get("ClientName");
-                            offer.clientPhone= (String) dc.getDocument().get("ClientPhone");
                             offer.serviceName= (String) dc.getDocument().get("ServiceName");
+                            offer.clientPhone= (String) dc.getDocument().get("ClientPhone");
                             offer.servicePhone= (String) dc.getDocument().get("ServicePhone");
-                            offer.TimeStamp=(String) dc.getDocument().get("TimeStamp");
                             offer.status=(String) dc.getDocument().get("Status");
                             OffersArray.add(offer);
                         }
@@ -89,14 +99,13 @@ public class BookingsClient extends AppCompatActivity {
                         {
                             if (CurrentPhone.equals(OffersArray.get(i).clientPhone))
                             {
-                                ClientName.setText(OffersArray.get(i).clientName);
-                                ClientPhone.setText(OffersArray.get(i).clientPhone);
-                                ServiceName.setText(OffersArray.get(i).serviceName);
-                                ServicePhone.setText(OffersArray.get(i).servicePhone);
-                                TimeStamp.setText(OffersArray.get(i).TimeStamp);
-                                Status.setText(OffersArray.get(i).status);
+                                OffersInfoArray.add(OffersArray.get(i));
+                                InfoArray.add(new BookingsList(R.drawable.tutoring,
+                                        OffersArray.get(i).serviceName ,OffersArray.get(i).servicePhone, OffersArray.get(i).status));
                             }
                         }
+
+                        ClientsOffers.setAdapter(BookingsArrayAdapter);
 
                     }
                 });

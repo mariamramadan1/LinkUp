@@ -4,18 +4,20 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class CustomWorkerList extends Throwable {
+public class BookingsList extends Throwable {
 
     private int ImageId;
     private String Worker;
-    private String Rating;
+    private String Phonenum;
 
+    private String status;
 
-    public CustomWorkerList(int imageId, String Worker, String Rating)
+    public BookingsList(int imageId, String Worker, String Phonenum,String Status)
     {
         this.ImageId = imageId;
         this.Worker = Worker;
-        this.Rating= Rating;
+        this.Phonenum= Phonenum;
+        this.status=  Status;
 
     }
     public int getImageId() {
@@ -26,8 +28,10 @@ public class CustomWorkerList extends Throwable {
         return Worker;
     }
 
-    public String getRating() {
-        return Rating;
+    public String getphoneNum() {
+        return Phonenum;
     }
-
+    public String getStatus() {
+        return status;
+    }
 }
