@@ -48,9 +48,22 @@ public class BookingsAdapter extends ArrayAdapter<BookingsList> {
 
         TextView ClientPhone = currentItemView.findViewById(R.id.ClientPhone);
         ClientPhone.setText(currentWorkerPosition.getphoneNum());
+        ClientPhone.setVisibility(View.INVISIBLE);
 
         TextView Status = currentItemView.findViewById(R.id.Status);
-        Status.setText(currentWorkerPosition.getStatus());
+        if (currentWorkerPosition.getStatus().equals("1"))
+        {
+            Status.setText("Accepted");
+            ClientPhone.setVisibility(View.VISIBLE);
+        }
+        else if (currentWorkerPosition.getStatus().equals("2"))
+        {
+            Status.setText("Rejected");
+        }
+        else
+        {
+            Status.setText("Pending");
+        }
 
 
         return currentItemView;

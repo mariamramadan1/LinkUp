@@ -13,6 +13,8 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -102,6 +104,18 @@ public class BookingsClient extends AppCompatActivity {
                                 OffersInfoArray.add(OffersArray.get(i));
                                 InfoArray.add(new BookingsList(R.drawable.tutoring,
                                         OffersArray.get(i).serviceName ,OffersArray.get(i).servicePhone, OffersArray.get(i).status));
+//                                if (OffersArray.get(i).status.equals("1"))
+//                                {
+//                                    ClientsOffers.setOnItemClickListener(new AdapterView.OnItemClickListener()
+//                                    {
+//                                        @Override
+//                                        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l)
+//                                        {
+//
+//                                        }
+//                                    });
+//                                }
+
                             }
                         }
 
