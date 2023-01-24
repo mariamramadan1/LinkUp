@@ -34,7 +34,7 @@ public class ServicesMenu extends AppCompatActivity {
         setContentView(R.layout.activity_services_menu);
         SearchButton= (ImageButton) findViewById(R.id.SearchButton);
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setDisplayHomeAsUpEnabled(false);
         actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.linkup_background)));
         NavigationBarView BottomBar= (NavigationBarView) findViewById(R.id.bottomNavigationView);
 

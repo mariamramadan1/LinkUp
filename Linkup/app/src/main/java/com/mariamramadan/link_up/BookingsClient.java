@@ -118,10 +118,14 @@ public class BookingsClient extends AppCompatActivity {
                                         @Override
                                         public void onItemClick(AdapterView<?> adapterView, View view, int position, long l)
                                         {
-                                            Intent ToReviewPage = new Intent(BookingsClient.this, ReviewPage.class);
-                                            ToReviewPage.putExtra("TimeStamp", InfoArray.get(position).getTimeStamp());
-                                            ToReviewPage.putExtra("ServicePhone", InfoArray.get(position).getphoneNum());
-                                            startActivity(ToReviewPage);
+                                            if (InfoArray.get(position).getStatus().equals("1"))
+                                            {
+                                                Intent ToReviewPage = new Intent(BookingsClient.this, ReviewPage.class);
+                                                ToReviewPage.putExtra("TimeStamp", InfoArray.get(position).getTimeStamp());
+                                                ToReviewPage.putExtra("ServiceName", InfoArray.get(position).getWorker());
+                                                ToReviewPage.putExtra("ServicePhone", InfoArray.get(position).getphoneNum());
+                                                startActivity(ToReviewPage);
+                                            }
                                         }
                                     });
                                 }
