@@ -38,17 +38,18 @@ public class LogoScreen extends Activity {
             {
                 FirebaseUser CurrentUser= FirebaseAuth.getInstance().getCurrentUser();
 //                Log.d("CurrentPhone", CurrentUser.getPhoneNumber());
-                //CurrentUser = null;
+//                CurrentUser = null;
                 if (CurrentUser == null)
                 {
                     Intent intent = new Intent(LogoScreen.this, VerifyPhoneNumber.class);
                     startActivity(intent);
                     finish();
                 }
-                else
+                else if (!(CurrentUser == null))
                 {
                     Log.d("User not Null", "");
                     FirebaseFirestore fstore = FirebaseFirestore.getInstance();
+                    FirebaseUser finalCurrentUser = CurrentUser;
                     fstore.collection("clients").orderBy("Phone", Query.Direction.ASCENDING).addSnapshotListener
                             (new EventListener<QuerySnapshot>()
                             {
@@ -65,10 +66,10 @@ public class LogoScreen extends Activity {
                                     for (DocumentChange dc: value.getDocumentChanges())
                                     {
 //                                        Log.d("Phone", (String) dc.getDocument().get("Phone"));
-                                        if (!((String) dc.getDocument().get("Phone")).isEmpty())
+                                        if (!(((String) dc.getDocument().get("Phone")).isEmpty()))
                                         {
                                             String PhoneNumber= (String) dc.getDocument().get("Phone");
-                                            if (PhoneNumber.equals(CurrentUser.getPhoneNumber()))
+                                            if (PhoneNumber.equals(finalCurrentUser.getPhoneNumber()))
                                             {
                                                 Log.d("ClientMatch", "");
                                                 Client = true;
@@ -87,7 +88,7 @@ public class LogoScreen extends Activity {
                                         intent = new Intent(LogoScreen.this, HomeServiceProv.class);
                                         Log.d("HomeServiceProv", "");
                                     }
-                                    intent.putExtra("User", CurrentUser);
+                                    intent.putExtra("User", finalCurrentUser);
                                     startActivity(intent);
                                     finish();
 
