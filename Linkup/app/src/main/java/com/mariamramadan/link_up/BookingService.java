@@ -73,7 +73,8 @@ public class BookingService extends AppCompatActivity {
                             {
                                 OffersInfoArray.add(OffersArray.get(i));
                                 InfoArray.add(new BookingsList(R.drawable.tutoring,
-                                        OffersArray.get(i).clientName ,OffersArray.get(i).clientPhone, OffersArray.get(i).status));
+                                        OffersArray.get(i).clientName ,OffersArray.get(i).clientPhone, OffersArray.get(i).status,
+                                        OffersArray.get(i).TimeStamp));
                             }
                         }
 

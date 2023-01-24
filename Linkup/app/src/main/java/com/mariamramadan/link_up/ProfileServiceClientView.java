@@ -87,6 +87,8 @@ public class ProfileServiceClientView extends AppCompatActivity
                         user.put("ServiceName", FNservice+ " " + LNService);
                         user.put("ServicePhone", PhoneService);
                         user.put("Status", "0");
+                        user.put("Rating", "0");
+                        user.put("Review", "");
 
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
                         {

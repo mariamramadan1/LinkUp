@@ -42,6 +42,7 @@ public class SignUpService2 extends AppCompatActivity {
         user.put("Category", Category);
         user.put("SubCategory", SubCategory);
         user.put("Rating", "0");
+        user.put("ServicesNum", "0");
 
         db.collection("service providers")
                 .add(user)

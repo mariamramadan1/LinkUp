@@ -93,6 +93,7 @@ public class BookingsClient extends AppCompatActivity {
                             offer.serviceName= (String) dc.getDocument().get("ServiceName");
                             offer.clientPhone= (String) dc.getDocument().get("ClientPhone");
                             offer.servicePhone= (String) dc.getDocument().get("ServicePhone");
+                            offer.TimeStamp=  (String) dc.getDocument().get("TimeStamp");
                             offer.status=(String) dc.getDocument().get("Status");
                             OffersArray.add(offer);
                         }
@@ -103,22 +104,27 @@ public class BookingsClient extends AppCompatActivity {
                             {
                                 OffersInfoArray.add(OffersArray.get(i));
                                 InfoArray.add(new BookingsList(R.drawable.tutoring,
-                                        OffersArray.get(i).serviceName ,OffersArray.get(i).servicePhone, OffersArray.get(i).status));
-//                                if (OffersArray.get(i).status.equals("1"))
-//                                {
-//                                    ClientsOffers.setOnItemClickListener(new AdapterView.OnItemClickListener()
-//                                    {
-//                                        @Override
-//                                        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l)
-//                                        {
-//
-//                                        }
-//                                    });
-//                                }
+                                        OffersArray.get(i).serviceName ,OffersArray.get(i).servicePhone, OffersArray.get(i).status,
+                                        OffersArray.get(i).TimeStamp));
+                                if (OffersArray.get(i).status.equals("1"))
+                                {
+
+                                    ClientsOffers.setOnItemClickListener(new AdapterView.OnItemClickListener()
+                                    {
+                                        @Override
+                                        public void onItemClick(AdapterView<?> adapterView, View view, int position, long l)
+                                        {
+                                            Intent ToReviewPage = new Intent(BookingsClient.this, ReviewPage.class);
+                                            ToReviewPage.putExtra("TimeStamp", InfoArray.get(position).getTimeStamp());
+                                            ToReviewPage.putExtra("ServiceName", InfoArray.get(position).getWorker());
+                                            startActivity(ToReviewPage);
+                                        }
+                                    });
+                                }
 
                             }
                         }
-
+//                        BookingsArrayAdapter.notifyDataSetChanged();
                         ClientsOffers.setAdapter(BookingsArrayAdapter);
 
                     }
