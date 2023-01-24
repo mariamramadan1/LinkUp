@@ -135,13 +135,16 @@ public class OfferPageService extends AppCompatActivity
         NameText2= (EditText) findViewById(R.id.ClientName);
         PhoneText= (EditText) findViewById(R.id.ClientPhone);
         StatusText= (EditText) findViewById(R.id.Status);
+        PhoneText.setVisibility(View.INVISIBLE);
 
         NameText.setText(ClientName);
         NameText2.setText(ClientName);
         PhoneText.setText(ClientPhone);
+
         if (Status.equals("1"))
         {
             StatusText.setText("Accepted");
+            PhoneText.setVisibility(View.VISIBLE);
         }
         else if (Status.equals("2"))
         {
