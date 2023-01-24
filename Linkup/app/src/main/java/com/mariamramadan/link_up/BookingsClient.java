@@ -120,7 +120,7 @@ public class BookingsClient extends AppCompatActivity {
                                         {
                                             Intent ToReviewPage = new Intent(BookingsClient.this, ReviewPage.class);
                                             ToReviewPage.putExtra("TimeStamp", InfoArray.get(position).getTimeStamp());
-                                            ToReviewPage.putExtra("ServiceName", InfoArray.get(position).getWorker());
+                                            ToReviewPage.putExtra("ServicePhone", InfoArray.get(position).getphoneNum());
                                             startActivity(ToReviewPage);
                                         }
                                     });

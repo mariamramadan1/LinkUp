@@ -60,6 +60,7 @@ public class Search extends AppCompatActivity {
                             worker.Lname= (String) dc.getDocument().get("LastName");
                             worker.Email= (String) dc.getDocument().get("Email");
                             worker.Category= (String) dc.getDocument().get("Category");
+                            worker.Rating= (String) dc.getDocument().get("Rating");
                             worker.SubCategory= (String) dc.getDocument().get("SubCategory");
                             WorkersArray.add(worker);
                         }

@@ -19,8 +19,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -30,6 +32,7 @@ import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.time.LocalDateTime;
@@ -49,32 +52,62 @@ public class OfferPageService extends AppCompatActivity
 
     public void ModifyOfferStatus(String status, String ts)
     {
-        db.collection("Offers").orderBy("ServicePhone", Query.Direction.ASCENDING).addSnapshotListener
-                (new EventListener<QuerySnapshot>()
-                {
+//        db.collection("Offers").orderBy("ServicePhone", Query.Direction.ASCENDING).addSnapshotListener
+//                (new EventListener<QuerySnapshot>()
+//                {
+//                    @Override
+//                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error)
+//                    {
+//                        Log.d("OnEvent", "");
+//
+//                        CurrentUser = FirebaseAuth.getInstance().getCurrentUser();
+//                        ClientPhone = CurrentUser.getPhoneNumber();
+//                        if (error != null) {
+//                            Log.d("Firebase Error", "");
+//                            return;
+//                        }
+//                        for (DocumentChange dc : value.getDocumentChanges())
+//                        {
+//                            Log.d("FORLOOP", "");
+//                            Log.d("Doc ID", dc.getDocument().getId());
+//                            if (ts.equals(String.valueOf(dc.getDocument().get("TimeStamp"))))
+//                            {
+//                                Log.d("Doc ID", dc.getDocument().getId());
+//                                db.collection("Offers").document(dc.getDocument().getId())
+//                                        .update("Status", status);
+//                                Toast.makeText(OfferPageService.this, "Request has been " + (status.equals("1") ? "accepted" : "rejected"), Toast.LENGTH_SHORT).show();
+//                            }
+//
+//                        }
+//                    }
+//                });
+        db.collection("Offers")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
-                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error)
+                    public void onComplete(@NonNull Task<QuerySnapshot> task)
                     {
-                        Log.d("OnEvent", "");
-
                         CurrentUser = FirebaseAuth.getInstance().getCurrentUser();
                         ClientPhone = CurrentUser.getPhoneNumber();
-                        if (error != null) {
-                            Log.d("Firebase Error", "");
-                            return;
-                        }
-                        for (DocumentChange dc : value.getDocumentChanges())
+                        if (task.isSuccessful())
                         {
-                            Log.d("FORLOOP", "");
-                            Log.d("Doc ID", dc.getDocument().getId());
-                            if (ts.equals(String.valueOf(dc.getDocument().get("TimeStamp"))))
+                            for (QueryDocumentSnapshot document : task.getResult())
                             {
-                                Log.d("Doc ID", dc.getDocument().getId());
-                                db.collection("Offers").document(dc.getDocument().getId())
-                                        .update("Status", status);
-                                Toast.makeText(OfferPageService.this, "Request has been " + (status.equals("1") ? "accepted" : "rejected"), Toast.LENGTH_SHORT).show();
-                            }
+                                Log.d("TAG", document.getId() + " => " + document.getData());
 
+                                if (ts.equals(String.valueOf(document.getData().get("TimeStamp"))))
+                                {
+                                    Log.d("Doc ID", document.getId());
+                                    db.collection("Offers").document(document.getId())
+                                            .update("Status", status);
+                                    Toast.makeText(OfferPageService.this, "Request has been " + (status.equals("1") ? "accepted" : "rejected"), Toast.LENGTH_SHORT).show();
+                                }
+
+                            }
+                        }
+                        else
+                        {
+                            Log.d("TAG", "Error getting documents: ", task.getException());
                         }
                     }
                 });

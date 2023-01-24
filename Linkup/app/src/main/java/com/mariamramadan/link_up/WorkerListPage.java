@@ -79,6 +79,7 @@ public class WorkerListPage extends AppCompatActivity
                             worker.Email= (String) dc.getDocument().get("Email");
                             worker.Category= (String) dc.getDocument().get("Category");
                             worker.SubCategory= (String) dc.getDocument().get("SubCategory");
+                            worker.Rating= (String)  dc.getDocument().get("Rating");
                             WorkersArray.add(worker);
                         }
 
@@ -93,7 +94,7 @@ public class WorkerListPage extends AppCompatActivity
 //                                Log.d("fn", WorkersArray.get(i).Fname + " " + WorkersArray.get(i).Lname);
                                 WorkerInfo.add(WorkersArray.get(i));
                                 FinalWorkersList.add(new CustomWorkerList(R.drawable.tutoring,
-                                        WorkersArray.get(i).Fname + " "+ WorkersArray.get(i).Lname, "0", SubCategory));
+                                        WorkersArray.get(i).Fname + " "+ WorkersArray.get(i).Lname, WorkersArray.get(i).Rating, SubCategory));
                             }
                         }
 //                        Log.d("workers", String.valueOf(FinalWorkersList));

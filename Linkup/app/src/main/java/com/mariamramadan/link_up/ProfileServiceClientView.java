@@ -160,7 +160,7 @@ public class ProfileServiceClientView extends AppCompatActivity
                                                 }
                                             });
                                 }
-                                else
+                                else if (OneBooking==false)
                                 {
                                     Toast.makeText(ProfileServiceClientView.this, "You already booked this service for the day", Toast.LENGTH_LONG).show();
                                 }

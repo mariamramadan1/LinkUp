@@ -1,12 +1,10 @@
 package com.mariamramadan.link_up;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 
 import android.os.Bundle;
-import android.text.Spannable;
-import android.text.SpannableString;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -17,6 +15,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentChange;
@@ -24,9 +24,8 @@ import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-
-import org.w3c.dom.Text;
 
 public class ReviewPage extends AppCompatActivity
 {
@@ -41,69 +40,65 @@ public class ReviewPage extends AppCompatActivity
 
     public void PostServiceEdit(String ts, String Rating, String Review)
     {
-        db.collection("Offers").orderBy("ServicePhone", Query.Direction.ASCENDING).addSnapshotListener
-                (new EventListener<QuerySnapshot>()
-                {
+        db.collection("Offers")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
-                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error)
+                    public void onComplete(@NonNull Task<QuerySnapshot> task)
                     {
-//                        Log.d("OnEvent", "");
-
-                        CurrentUser = FirebaseAuth.getInstance().getCurrentUser();
-                        String PhoneService = CurrentUser.getPhoneNumber();
-                        if (error != null) {
-                            Log.d("Firebase Error", "");
-                            return;
-                        }
-                        for (DocumentChange dc : value.getDocumentChanges())
+                        if (task.isSuccessful())
                         {
-//                            Log.d("FORLOOP", "");
-                            Log.d("Doc ID", dc.getDocument().getId());
-                            if (ts.equals(String.valueOf(dc.getDocument().get("TimeStamp"))))
+                            for (QueryDocumentSnapshot document : task.getResult())
                             {
-                                Log.d("Doc ID", dc.getDocument().getId());
-                                db.collection("Offers").document(dc.getDocument().getId())
-                                            .update("Rating", Rating);
-                                db.collection("Offers").document(dc.getDocument().getId())
-                                            .update("Review", Review);
-                            }
+                                Log.d("TAG", document.getId() + " => " + document.getData());
 
+                                if (ts.equals(String.valueOf(document.getData().get("TimeStamp"))))
+                                {
+                                    db.collection("Offers").document(document.getId())
+                                                .update("Rating", Rating);
+                                    db.collection("Offers").document(document.getId())
+                                                .update("Review", Review);
+                                }
+
+                            }
+                        }
+                        else
+                        {
+                            Log.d("TAG", "Error getting documents: ", task.getException());
                         }
                     }
                 });
     }
-    public void CumaltiveRating(int CurrentRating)
+    public void CumaltiveRating(int CurrentRating, String PhoneService)
     {
-        db.collection("service providers").orderBy("Phone", Query.Direction.ASCENDING).addSnapshotListener
-                (new EventListener<QuerySnapshot>()
-                {
+        db.collection("service providers")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
-                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error)
+                    public void onComplete(@NonNull Task<QuerySnapshot> task)
                     {
-//                        Log.d("OnEvent", "");
-
-                        CurrentUser = FirebaseAuth.getInstance().getCurrentUser();
-                        String PhoneService = CurrentUser.getPhoneNumber();
-                        if (error != null) {
-                            Log.d("Firebase Error", "");
-                            return;
-                        }
-                        for (DocumentChange dc : value.getDocumentChanges())
+                        if (task.isSuccessful())
                         {
-//                            Log.d("FORLOOP", "");
-                            Log.d("Doc ID", dc.getDocument().getId());
-                            if (PhoneService.equals(String.valueOf(dc.getDocument().get("Phone"))))
+                            for (QueryDocumentSnapshot document : task.getResult())
                             {
-                                int NewServicesNum= Integer.parseInt((String) dc.getDocument().get("ServicesNum"))+1;
-                                int OldRating= Integer.parseInt((String) dc.getDocument().get("Rating"));
-                                int newRating = (OldRating+CurrentRating)/NewServicesNum;
-                                Log.d("Doc ID", dc.getDocument().getId());
-                                db.collection("Rating").document(dc.getDocument().getId())
-                                        .update("Rating", String.valueOf(newRating));
-                                db.collection("Offers").document(dc.getDocument().getId())
-                                        .update("Review", NewServicesNum);
-                            }
+                                Log.d("TAG", document.getId() + " => " + document.getData());
 
+                                if (PhoneService.equals(document.getData().get("Phone")))
+                                {
+                                    int NewServicesNum= Integer.parseInt((String) document.getData().get("ServicesNum"))+1;
+                                    int OldRating= Integer.parseInt((String) document.getData().get("Rating"));
+                                    int newRating = (OldRating+CurrentRating)/NewServicesNum;
+                                    db.collection("service providers").document(document.getId())
+                                            .update("Rating", Integer.toString(newRating));
+                                    db.collection("service providers").document(document.getId())
+                                            .update("ServicesNum", Integer.toString(NewServicesNum));
+                                }
+
+                            }
+                        }
+                        else
+                        {
+                            Log.d("TAG", "Error getting documents: ", task.getException());
                         }
                     }
                 });
@@ -145,7 +140,7 @@ public class ReviewPage extends AppCompatActivity
             {
                 FinalReview= CommentsBox.getText().toString();
                 PostServiceEdit(TimeStamp, FinalRating, FinalReview);
-                CumaltiveRating(Integer.parseInt(FinalRating));
+                CumaltiveRating(Integer.parseInt(FinalRating), getIntent().getStringExtra("ServicePhone"));
                 finish();
 
 
