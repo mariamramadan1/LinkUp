@@ -82,7 +82,7 @@
                         android:textColor="@android:color/black"
                         android:layout_weight="1"
                         android:textSize="22sp"
-                        android:text="Name"/>
+                       />
 
                     <TextView
                         android:id="@+id/Review1"
@@ -94,14 +94,13 @@
                         android:textColor="@android:color/black"
                         android:layout_weight="1"
                         android:textSize="18sp"
-                        android:text="Name"/>
+                        />
                     <TextView
                         android:id="@+id/Rating1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:drawablePadding="10dp"
                         android:drawableStart="@drawable/star_24"
-                        android:text="Status"
                         android:textSize="14sp"
                         android:textColor="@color/black"/>
 
@@ -132,7 +131,7 @@
                         android:textColor="@android:color/black"
                         android:layout_weight="1"
                         android:textSize="22sp"
-                        android:text="Name"/>
+                       />
 
                     <TextView
                         android:id="@+id/Review2"
@@ -144,14 +143,13 @@
                         android:textColor="@android:color/black"
                         android:layout_weight="1"
                         android:textSize="18sp"
-                        android:text="Name"/>
+                       />
                     <TextView
                         android:id="@+id/Rating2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:drawablePadding="10dp"
                         android:drawableStart="@drawable/star_24"
-                        android:text="Status"
                         android:textSize="14sp"
                         android:textColor="@color/black"/>
 
@@ -179,7 +177,7 @@
                         android:textColor="@android:color/black"
                         android:layout_weight="1"
                         android:textSize="22sp"
-                        android:text="Name"/>
+                       />
 
                     <TextView
                         android:id="@+id/Review3"
@@ -191,14 +189,13 @@
                         android:textColor="@android:color/black"
                         android:layout_weight="1"
                         android:textSize="18sp"
-                        android:text="Name"/>
+                       />
                     <TextView
                         android:id="@+id/Rating3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:drawablePadding="10dp"
                         android:drawableStart="@drawable/star_24"
-                        android:text="Status"
                         android:textSize="14sp"
                         android:textColor="@color/black"/>
 
@@ -290,14 +287,13 @@
                         android:textColor="@android:color/black"
                         android:layout_weight="1"
                         android:textSize="22sp"
-                        android:text="Name"/>
+                     />
                     <TextView
                         android:id="@+id/Status1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:drawablePadding="10dp"
                         android:drawableStart="@drawable/pending_action_24"
-                        android:text="Status"
                         android:textSize="18sp"
                         android:textColor="@color/black"/>
 
@@ -328,8 +324,7 @@
                         android:gravity="start"
                         android:textColor="@android:color/black"
                         android:layout_weight="1"
-                        android:textSize="22sp"
-                        android:text="Hello"/>
+                        android:textSize="22sp" />
 
                     <TextView
                         android:id="@+id/Status2"
@@ -337,7 +332,6 @@
                         android:layout_height="wrap_content"
                         android:drawablePadding="10dp"
                         android:drawableStart="@drawable/pending_action_24"
-                        android:text="Status"
                         android:textSize="18sp"
                         android:textColor="@color/black"/>
 
@@ -364,15 +358,13 @@
                         android:gravity="start"
                         android:textColor="@android:color/black"
                         android:layout_weight="1"
-                        android:textSize="22sp"
-                        android:text="Hello"/>
+                        android:textSize="22sp" />
                     <TextView
                         android:id="@+id/Status3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:drawablePadding="10dp"
                         android:drawableStart="@drawable/pending_action_24"
-                        android:text="Status"
                         android:textSize="18sp"
                         android:textColor="@color/black"/>
 

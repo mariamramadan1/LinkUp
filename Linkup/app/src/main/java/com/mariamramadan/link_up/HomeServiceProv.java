@@ -103,73 +103,67 @@ public class HomeServiceProv extends AppCompatActivity {
                         }
                         for (DocumentChange dc: value.getDocumentChanges())
                         {
-                            Offers offer= new Offers();
-                            offer.clientName= (String) dc.getDocument().get("ClientName");
-                            offer.servicePhone= (String) dc.getDocument().get("ServicePhone");
-                            offer.status=(String) dc.getDocument().get("Status");
-                            offer.Review=(String) dc.getDocument().get("Review");
-                            offer.Rating=(String) dc.getDocument().get("Rating");
-                            OffersArray.add(offer);
+                            if (CurrentPhone.equals(dc.getDocument().get("ServicePhone")))
+                            {
+                                Offers offer = new Offers();
+                                offer.clientName = (String) dc.getDocument().get("ClientName");
+                                offer.servicePhone = (String) dc.getDocument().get("ServicePhone");
+                                offer.status = (String) dc.getDocument().get("Status");
+                                offer.Review = (String) dc.getDocument().get("Review");
+                                offer.Rating = (String) dc.getDocument().get("Rating");
+                                OffersArray.add(offer);
+                            }
                         }
 
                         for (int i=0; i < OffersArray.size(); i++)
                         {
                             if (CurrentPhone.equals(OffersArray.get(i).servicePhone))
                             {
-                                ClientName1.setText(OffersArray.get(0).clientName);
-                                ClientName4.setText(OffersArray.get(0).clientName);
-                                ClientName2.setText(OffersArray.get(1).clientName);
-                                ClientName5.setText(OffersArray.get(1).clientName);
-                                ClientName3.setText(OffersArray.get(2).clientName);
-                                ClientName6.setText(OffersArray.get(2).clientName);
-                                Review1.setText(OffersArray.get(0).Review);
-                                Review2.setText(OffersArray.get(1).Review);
-                                Review3.setText(OffersArray.get(2).Review);
-                                Rating1.setText(OffersArray.get(0).Rating);
-                                Rating2.setText(OffersArray.get(1).Rating);
-                                Rating3.setText(OffersArray.get(2).Rating);
-                                if (OffersArray.get(0).status.equals("1"))
+                                if(i==0)
                                 {
-                                    Status1.setText("Accepted");
-                                }
-                                else if (OffersArray.get(0).status.equals("2"))
-                                {
-                                    Status1.setText("Rejected");
-                                }
-                                else
-                                {
-                                    Status1.setText("Pending");
-                                }
+                                    Log.d("current phone", CurrentPhone);
+                                    ClientName1.setText(OffersArray.get(i).clientName);
+                                    ClientName4.setText(OffersArray.get(i).clientName);
+                                    Review1.setText(OffersArray.get(i).Review);
+                                    Rating1.setText(OffersArray.get(i).Rating);
 
-                                if (OffersArray.get(1).status.equals("1"))
-                                {
+                                    if (OffersArray.get(i).status.equals("1")) {
+                                        Status1.setText("Accepted");
+                                    } else if (OffersArray.get(i).status.equals("2")) {
+                                        Status1.setText("Rejected");
+                                    } else {
+                                        Status1.setText("Pending");
+                                    }
+                                } if (i==1) {
+                                    ClientName2.setText(OffersArray.get(i).clientName);
+                                    ClientName5.setText(OffersArray.get(i).clientName);
+                                    Review2.setText(OffersArray.get(i).Review);
+                                    Rating2.setText(OffersArray.get(i).Rating);
+
+                                if (OffersArray.get(i).status.equals("1")) {
                                     Status2.setText("Accepted");
-                                }
-                                else if (OffersArray.get(1).status.equals("2"))
-                                {
+                                } else if (OffersArray.get(i).status.equals("2")) {
                                     Status2.setText("Rejected");
-                                }
-                                else
-                                {
+                                } else {
                                     Status2.setText("Pending");
                                 }
 
-                                if (OffersArray.get(2).status.equals("1"))
-                                {
+                                }if (i==2) {
+                                ClientName3.setText(OffersArray.get(i).clientName);
+                                ClientName6.setText(OffersArray.get(i).clientName);
+                                Review3.setText(OffersArray.get(i).Review);
+                                Rating3.setText(OffersArray.get(i).Rating);
+                                if (OffersArray.get(i).status.equals("1")) {
                                     Status3.setText("Accepted");
-                                }
-                                else if (OffersArray.get(2).status.equals("2"))
-                                {
+                                } else if (OffersArray.get(i).status.equals("2")) {
                                     Status3.setText("Rejected");
-                                }
-                                else
-                                {
+                                } else {
                                     Status3.setText("Pending");
                                 }
 
-//                                Status1.setText(OffersArray.get(0).status);
-//                                Status2.setText(OffersArray.get(1).status);
-//                                Status3.setText(OffersArray.get(2).status);
+                            }
+
+
                             }
                         }
 
