@@ -5,13 +5,32 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="#033172"
-        android:text="Recent Reviews:"
-        android:textStyle="bold"
-        android:textSize="27sp"/>
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#033172"
+            android:text="Recent Reviews:"
+            android:textStyle="bold"
+            android:textSize="27sp"/>
+        <TextView
+            android:id="@+id/ViewMore1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#033172"
+            android:text="View more"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:gravity="right"
+            android:layout_marginLeft="100dp"
+            android:clickable="true"/>
+
+    </LinearLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -158,13 +177,31 @@
 
     </LinearLayout>
 
-    <TextView
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="#033172"
-        android:text="Recent Bookings:"
-        android:textStyle="bold"
-        android:textSize="27sp"/>
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#033172"
+            android:text="Recent Bookings:"
+            android:textStyle="bold"
+            android:textSize="27sp"/>
+        <TextView
+            android:id="@+id/ViewMore2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#033172"
+            android:text="View more"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:gravity="right"
+            android:layout_marginLeft="90dp"
+            android:clickable="true"/>
+
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"

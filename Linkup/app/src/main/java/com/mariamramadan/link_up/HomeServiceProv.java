@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationBarView;
@@ -37,6 +38,12 @@ public class HomeServiceProv extends AppCompatActivity {
     TextView Status1;
     TextView Status2;
     TextView Status3;
+
+    TextView ViewMore1;
+
+    TextView ViewMore2;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,6 +60,8 @@ public class HomeServiceProv extends AppCompatActivity {
         Status1 = (TextView) findViewById(R.id.Status1);
         Status2 = (TextView) findViewById(R.id.Status2);
         Status3 = (TextView) findViewById(R.id.Status3);
+
+        ViewMore2 = (TextView) findViewById(R.id.ViewMore2);
 
         CurrentUser= FirebaseAuth.getInstance().getCurrentUser();
         CurrentPhone= CurrentUser.getPhoneNumber();
@@ -134,6 +143,23 @@ public class HomeServiceProv extends AppCompatActivity {
                     }
                 });
 
+        ViewMore1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent toReviews= new Intent(getApplicationContext(), Reviews.class);
+                startActivity(toReviews);
+                overridePendingTransition(0,0);
+            }
+        });
+
+        ViewMore2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent toOffers= new Intent(HomeServiceProv.this, BookingService.class);
+                startActivity(toOffers);
+                //overridePendingTransition(0,0);
+            }
+        });
 
         BottomBar.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener()
         {
