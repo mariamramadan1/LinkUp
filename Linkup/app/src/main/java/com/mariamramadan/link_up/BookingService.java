@@ -112,6 +112,8 @@ public class BookingService extends AppCompatActivity {
                         Intent toOfferPage= new Intent(BookingService.this, OfferPageService.class);
                         toOfferPage.putExtra("ClientName", OffersInfoArray.get(i).clientName);
                         toOfferPage.putExtra("ClientPhone", OffersInfoArray.get(i).clientPhone);
+                        toOfferPage.putExtra("ServiceName", OffersInfoArray.get(i).serviceName);
+                        toOfferPage.putExtra("ServicePhone", OffersInfoArray.get(i).servicePhone);
                         toOfferPage.putExtra("Status", OffersInfoArray.get(i).status);
                         toOfferPage.putExtra("TimeStamp", OffersInfoArray.get(i).TimeStamp);
                         startActivity(toOfferPage);
@@ -152,6 +154,7 @@ public class BookingService extends AppCompatActivity {
                 return false;
             }
         });
+
 
     }
 
