@@ -38,7 +38,7 @@ public class LogoScreen extends Activity {
             {
                 FirebaseUser CurrentUser= FirebaseAuth.getInstance().getCurrentUser();
 //                Log.d("CurrentPhone", CurrentUser.getPhoneNumber());
-//                CurrentUser = null;
+                //CurrentUser = null;
                 if (CurrentUser == null)
                 {
                     Intent intent = new Intent(LogoScreen.this, VerifyPhoneNumber.class);
