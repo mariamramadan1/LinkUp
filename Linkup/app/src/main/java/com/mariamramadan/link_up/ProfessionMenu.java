@@ -7,7 +7,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -61,19 +60,19 @@ public class ProfessionMenu extends AppCompatActivity {
                 Profession.add("Carpenter");
                 Profession.add("Gardener");
                 Profession.add("Wall Painter");
-                ProfessionImage.add(R.drawable.tutoring);
-                ProfessionImage.add(R.drawable.tutoring);
-                ProfessionImage.add(R.drawable.tutoring);
-                ProfessionImage.add(R.drawable.tutoring);
-                ProfessionImage.add(R.drawable.tutoring);
+                ProfessionImage.add(R.drawable.homeservices);
+                ProfessionImage.add(R.drawable.homeservices);
+                ProfessionImage.add(R.drawable.homeservices);
+                ProfessionImage.add(R.drawable.homeservices);
+                ProfessionImage.add(R.drawable.homeservices);
                 break;
             case "Volunteering":
                 Profession.add("Elderly Care");
                 Profession.add("Pet Care");
                 Profession.add("Sighted Assistant");
-                ProfessionImage.add(R.drawable.tutoring);
-                ProfessionImage.add(R.drawable.tutoring);
-                ProfessionImage.add(R.drawable.tutoring);
+                ProfessionImage.add(R.drawable.volunteering);
+                ProfessionImage.add(R.drawable.volunteering);
+                ProfessionImage.add(R.drawable.volunteering);
 
                 break;
             case "Tech Freelancers":
@@ -81,10 +80,10 @@ public class ProfessionMenu extends AppCompatActivity {
                 Profession.add("Website Developer");
                 Profession.add("Software Engineer");
                 Profession.add("Game Design");
-                ProfessionImage.add(R.drawable.tutoring);
-                ProfessionImage.add(R.drawable.tutoring);
-                ProfessionImage.add(R.drawable.tutoring);
-                ProfessionImage.add(R.drawable.tutoring);
+                ProfessionImage.add(R.drawable.tech);
+                ProfessionImage.add(R.drawable.tech);
+                ProfessionImage.add(R.drawable.tech);
+                ProfessionImage.add(R.drawable.tech);
                 break;
             case "Art & Design":
                 Profession.add("Architects");
@@ -92,17 +91,17 @@ public class ProfessionMenu extends AppCompatActivity {
                 Profession.add("Interior Designers");
                 Profession.add("Fashion Designers");
                 Profession.add("Animators");
-                ProfessionImage.add(R.drawable.tutoring);
-                ProfessionImage.add(R.drawable.tutoring);
-                ProfessionImage.add(R.drawable.tutoring);
-                ProfessionImage.add(R.drawable.tutoring);
-                ProfessionImage.add(R.drawable.tutoring);
+                ProfessionImage.add(R.drawable.design);
+                ProfessionImage.add(R.drawable.design);
+                ProfessionImage.add(R.drawable.design);
+                ProfessionImage.add(R.drawable.design);
+                ProfessionImage.add(R.drawable.design);
                 break;
             case "Therapy":
                 Profession.add("Counseling");
                 Profession.add("Physical Therapy");
-                ProfessionImage.add(R.drawable.tutoring);
-                ProfessionImage.add(R.drawable.tutoring);
+                ProfessionImage.add(R.drawable.therapy);
+                ProfessionImage.add(R.drawable.therapy);
                 break;
 
         }

@@ -32,10 +32,16 @@ import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+
+interface CallbackBook {
+
+    void onCallbackBook(boolean OneBooking);
+}
 
 public class ProfileServiceClientView extends AppCompatActivity
 {
@@ -46,6 +52,37 @@ public class ProfileServiceClientView extends AppCompatActivity
     FirebaseAuth mAuth = FirebaseAuth.getInstance();
     Date date = new Date();
     Button Book;
+
+    public void OneBookingPerDay(String PhoneService, CallbackBook myCallback)
+    {
+        db.collection("Offers").orderBy("ServicePhone", Query.Direction.ASCENDING).addSnapshotListener
+                (new EventListener<QuerySnapshot>()
+                {
+                    boolean OneBooking = true;
+                    @Override
+                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                        if (error != null)
+                        {
+                            Log.e(TAG, "Firebase Error");
+                            return;
+                        }
+                        for (DocumentChange dc : value.getDocumentChanges())
+                        {
+                            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O)
+                            {
+
+                                String ts_string = (String) dc.getDocument().get("TimeStamp");
+                                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSSSS");
+                                LocalDateTime offerTimeStamp= LocalDateTime.parse(ts_string, formatter);
+                                if (offerTimeStamp.getDayOfMonth() == LocalDateTime.now().getDayOfMonth())
+                                    OneBooking = false;
+                            }
+                        }
+                        myCallback.onCallbackBook(OneBooking);
+                    }
+                });
+
+    }
 
     public void MakeOffer(String PhoneService, String FNservice, String LNService)
     {
@@ -81,39 +118,55 @@ public class ProfileServiceClientView extends AppCompatActivity
                             }
                         }
 
-                        Map<String, Object> user = new HashMap<>();
-                        user.put("ClientName", CurrentName);
-                        user.put("ClientPhone", ClientPhone);
-                        user.put("ServiceName", FNservice+ " " + LNService);
-                        user.put("ServicePhone", PhoneService);
-                        user.put("Status", "0");
-                        user.put("Rating", "0");
-                        user.put("Review", "");
-
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
+                        OneBookingPerDay(PhoneService, new CallbackBook()
                         {
-                            user.put("TimeStamp", String.valueOf(LocalDateTime.now()));
-                        }
-
-                        db.collection("Offers")
-                                .add(user)
-                                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                                    @Override
-                                    public void onSuccess(DocumentReference documentReference)
-                                    {
-                                        Toast.makeText(ProfileServiceClientView.this, "Request sent to "+
-                                                Fname + " "+ Lname, Toast.LENGTH_LONG).show();
-                                    }
-                                })
-                                .addOnFailureListener(new OnFailureListener()
+                            @Override
+                            public void onCallbackBook(boolean OneBooking)
+                            {
+                                Log.d("One Booking", String.valueOf(OneBooking));
+                                if (OneBooking)
                                 {
-                                    @Override
-                                    public void onFailure(@NonNull Exception e)
+                                    Map<String, Object> user = new HashMap<>();
+                                    user.put("ClientName", CurrentName);
+                                    user.put("ClientPhone", ClientPhone);
+                                    user.put("ServiceName", FNservice+ " " + LNService);
+                                    user.put("ServicePhone", PhoneService);
+                                    user.put("Status", "0");
+                                    user.put("Rating", "0");
+                                    user.put("Review", "");
+
+                                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
                                     {
-                                        Toast.makeText(ProfileServiceClientView.this,
-                                                "Failed, please try again", Toast.LENGTH_LONG).show();
+                                        user.put("TimeStamp", String.valueOf(LocalDateTime.now()));
                                     }
-                                });
+
+                                    db.collection("Offers")
+                                            .add(user)
+                                            .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                                @Override
+                                                public void onSuccess(DocumentReference documentReference)
+                                                {
+                                                    Toast.makeText(ProfileServiceClientView.this, "Request sent to "+
+                                                            Fname + " "+ Lname, Toast.LENGTH_LONG).show();
+                                                }
+                                            })
+                                            .addOnFailureListener(new OnFailureListener()
+                                            {
+                                                @Override
+                                                public void onFailure(@NonNull Exception e)
+                                                {
+                                                    Toast.makeText(ProfileServiceClientView.this,
+                                                            "Failed, please try again", Toast.LENGTH_LONG).show();
+                                                }
+                                            });
+                                }
+                                else
+                                {
+                                    Toast.makeText(ProfileServiceClientView.this, "You already booked this service for the day", Toast.LENGTH_LONG).show();
+                                }
+                            }
+                        });
+
                     }
                 });
     }
