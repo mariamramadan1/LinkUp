@@ -1,9 +1,6 @@
 package com.mariamramadan.link_up;
 
-import static android.content.ContentValues.TAG;
-
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -55,10 +52,10 @@ public class ServicesMenu extends AppCompatActivity {
         Images.add(R.drawable.tutoring);
         Images.add(R.drawable.cosmetology);
         Images.add(R.drawable.homeservices);
-        Images.add(R.drawable.voulnteering);
+        Images.add(R.drawable.volunteering);
         Images.add(R.drawable.tech);
         Images.add(R.drawable.design);
-        Images.add(R.drawable.design);
+        Images.add(R.drawable.therapy);
         CustomGrid adapter=new CustomGrid(ServicesMenu.this, Categories, Images);
         menu.setAdapter(adapter);
 
