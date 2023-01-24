@@ -38,6 +38,10 @@ class Offers
     String TimeStamp;
     String status;
 
+    String Rating;
+
+    String Review;
+
 }
 public class BookingsClient extends AppCompatActivity {
 

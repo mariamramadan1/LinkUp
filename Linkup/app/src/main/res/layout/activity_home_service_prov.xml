@@ -73,7 +73,7 @@
                         android:src="@drawable/person_24"/>
 
                     <TextView
-                        android:id="@+id/Review1"
+                        android:id="@+id/Name1"
                         android:layout_width="250dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
@@ -83,6 +83,18 @@
                         android:layout_weight="1"
                         android:textSize="22sp"
                         android:text="Name"/>
+
+                    <TextView
+                        android:id="@+id/Review1"
+                        android:layout_width="250dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:paddingLeft="10dp"
+                        android:gravity="start"
+                        android:textColor="@android:color/black"
+                        android:layout_weight="1"
+                        android:textSize="18sp"
+                        android:text="Name"/>
                     <TextView
                         android:id="@+id/Rating1"
                         android:layout_width="match_parent"
@@ -90,7 +102,7 @@
                         android:drawablePadding="10dp"
                         android:drawableStart="@drawable/star_24"
                         android:text="Status"
-                        android:textSize="22sp"
+                        android:textSize="14sp"
                         android:textColor="@color/black"/>
 
 
@@ -110,6 +122,17 @@
                         android:padding="10dp"
                         android:layout_gravity="center"
                         android:src="@drawable/person_24"/>
+                    <TextView
+                        android:id="@+id/Name2"
+                        android:layout_width="250dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:paddingLeft="10dp"
+                        android:gravity="start"
+                        android:textColor="@android:color/black"
+                        android:layout_weight="1"
+                        android:textSize="22sp"
+                        android:text="Name"/>
 
                     <TextView
                         android:id="@+id/Review2"
@@ -120,7 +143,7 @@
                         android:gravity="start"
                         android:textColor="@android:color/black"
                         android:layout_weight="1"
-                        android:textSize="22sp"
+                        android:textSize="18sp"
                         android:text="Name"/>
                     <TextView
                         android:id="@+id/Rating2"
@@ -129,7 +152,7 @@
                         android:drawablePadding="10dp"
                         android:drawableStart="@drawable/star_24"
                         android:text="Status"
-                        android:textSize="22sp"
+                        android:textSize="14sp"
                         android:textColor="@color/black"/>
 
                 </LinearLayout>
@@ -147,7 +170,7 @@
                         android:src="@drawable/person_24"/>
 
                     <TextView
-                        android:id="@+id/Review3"
+                        android:id="@+id/Name3"
                         android:layout_width="250dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
@@ -157,6 +180,18 @@
                         android:layout_weight="1"
                         android:textSize="22sp"
                         android:text="Name"/>
+
+                    <TextView
+                        android:id="@+id/Review3"
+                        android:layout_width="250dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:paddingLeft="10dp"
+                        android:gravity="start"
+                        android:textColor="@android:color/black"
+                        android:layout_weight="1"
+                        android:textSize="18sp"
+                        android:text="Name"/>
                     <TextView
                         android:id="@+id/Rating3"
                         android:layout_width="match_parent"
@@ -164,7 +199,7 @@
                         android:drawablePadding="10dp"
                         android:drawableStart="@drawable/star_24"
                         android:text="Status"
-                        android:textSize="22sp"
+                        android:textSize="14sp"
                         android:textColor="@color/black"/>
 
                 </LinearLayout>
@@ -263,7 +298,7 @@
                         android:drawablePadding="10dp"
                         android:drawableStart="@drawable/pending_action_24"
                         android:text="Status"
-                        android:textSize="22sp"
+                        android:textSize="18sp"
                         android:textColor="@color/black"/>
 
 
@@ -303,7 +338,7 @@
                         android:drawablePadding="10dp"
                         android:drawableStart="@drawable/pending_action_24"
                         android:text="Status"
-                        android:textSize="22sp"
+                        android:textSize="18sp"
                         android:textColor="@color/black"/>
 
                 </LinearLayout>
@@ -338,7 +373,7 @@
                         android:drawablePadding="10dp"
                         android:drawableStart="@drawable/pending_action_24"
                         android:text="Status"
-                        android:textSize="22sp"
+                        android:textSize="18sp"
                         android:textColor="@color/black"/>
 
                 </LinearLayout>

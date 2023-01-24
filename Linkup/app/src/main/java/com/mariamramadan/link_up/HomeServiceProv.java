@@ -39,6 +39,15 @@ public class HomeServiceProv extends AppCompatActivity {
     TextView Status2;
     TextView Status3;
 
+    TextView ClientName4;
+    TextView ClientName5;
+    TextView ClientName6;
+    TextView Review1;
+    TextView Review2;
+    TextView Review3;
+    TextView Rating1;
+    TextView Rating2;
+    TextView Rating3;
     TextView ViewMore1;
 
     TextView ViewMore2;
@@ -57,11 +66,24 @@ public class HomeServiceProv extends AppCompatActivity {
         ClientName2 = (TextView) findViewById(R.id.ClientName2);
         ClientName3 = (TextView) findViewById(R.id.ClientName3);
 
+        ClientName4 = (TextView) findViewById(R.id.Name1);
+        ClientName5 = (TextView) findViewById(R.id.Name2);
+        ClientName6 = (TextView) findViewById(R.id.Name3);
+
         Status1 = (TextView) findViewById(R.id.Status1);
         Status2 = (TextView) findViewById(R.id.Status2);
         Status3 = (TextView) findViewById(R.id.Status3);
 
+        Review1= (TextView) findViewById(R.id.Review1);
+        Review2= (TextView) findViewById(R.id.Review2);
+        Review3= (TextView) findViewById(R.id.Review3);
+
+        Rating1= (TextView) findViewById(R.id.Rating1);
+        Rating2= (TextView) findViewById(R.id.Rating2);
+        Rating3= (TextView) findViewById(R.id.Rating3);
+
         ViewMore2 = (TextView) findViewById(R.id.ViewMore2);
+        ViewMore1 = (TextView) findViewById(R.id.ViewMore1);
 
         CurrentUser= FirebaseAuth.getInstance().getCurrentUser();
         CurrentPhone= CurrentUser.getPhoneNumber();
@@ -85,6 +107,8 @@ public class HomeServiceProv extends AppCompatActivity {
                             offer.clientName= (String) dc.getDocument().get("ClientName");
                             offer.servicePhone= (String) dc.getDocument().get("ServicePhone");
                             offer.status=(String) dc.getDocument().get("Status");
+                            offer.Review=(String) dc.getDocument().get("Review");
+                            offer.Rating=(String) dc.getDocument().get("Rating");
                             OffersArray.add(offer);
                         }
 
@@ -93,8 +117,17 @@ public class HomeServiceProv extends AppCompatActivity {
                             if (CurrentPhone.equals(OffersArray.get(i).servicePhone))
                             {
                                 ClientName1.setText(OffersArray.get(0).clientName);
+                                ClientName4.setText(OffersArray.get(0).clientName);
                                 ClientName2.setText(OffersArray.get(1).clientName);
+                                ClientName5.setText(OffersArray.get(1).clientName);
                                 ClientName3.setText(OffersArray.get(2).clientName);
+                                ClientName6.setText(OffersArray.get(2).clientName);
+                                Review1.setText(OffersArray.get(0).Review);
+                                Review2.setText(OffersArray.get(1).Review);
+                                Review3.setText(OffersArray.get(2).Review);
+                                Rating1.setText(OffersArray.get(0).Rating);
+                                Rating2.setText(OffersArray.get(1).Rating);
+                                Rating3.setText(OffersArray.get(2).Rating);
                                 if (OffersArray.get(0).status.equals("1"))
                                 {
                                     Status1.setText("Accepted");
@@ -121,11 +154,11 @@ public class HomeServiceProv extends AppCompatActivity {
                                     Status2.setText("Pending");
                                 }
 
-                                if (OffersArray.get(3).status.equals("1"))
+                                if (OffersArray.get(2).status.equals("1"))
                                 {
                                     Status3.setText("Accepted");
                                 }
-                                else if (OffersArray.get(3).status.equals("2"))
+                                else if (OffersArray.get(2).status.equals("2"))
                                 {
                                     Status3.setText("Rejected");
                                 }
