@@ -26,6 +26,7 @@ Link up is an app that connects two types of users: clients and service provider
 - The categories and subcategories are predefined and cannot be changed or increased
 - There is only one rating and review per request; However, it can be updated anytime.
 - rating of the service provider is cummaltive, it is the total ratings divided by the number of services done.
+- search is done by service provider's first name, last name, or category, but the name or the category has to be typed in full.
 
 ## Limitations
 - profile pictures are static
@@ -37,5 +38,33 @@ Link up is an app that connects two types of users: clients and service provider
 - service provider are able to add categories other than those already there
 - notifications to instantly notify service provider when bookings are made, and clients when bookings are accepted
 - allowing users to have profile pictures, and generally attaching photos in the app e.g. portfolio of previous work for service providers.
+
+## File Structures and activities' description
+- LogoScreen: splash screen on app start-up
+- VerifyPhoneNumber: the activity where one enters their phone number and verification code
+- AccountType: specify which user is signing up e.g. client or service provider
+- SignUpClient: Sign up page for the client to fill personal info
+- SignUpService: Sign up page for the service provider to fill personal info
+- SignUpService2: Continuation for the service provider's sign up to fill profession details
+- CustomGrid: Adapter that populates the Categories and subcategories menu
+- Search: implements search for service provider by first name, last name, or category
+- ServicesMenu: Home page for the client
+- ProfessionMenu: subcategories menu based on the clicked category
+- ProfileClient: Profile page of the client
+- ProfileService: profile page of the service provider
+- ProfileServiceClientView: profile page of the service provider from the client's view
+- CustomWorkerAdapter: populates the list of workers in each subcategory
+- CustomWorkerList: class that specifies the elements contained in each item of the workers' list page
+- WorkerListPage: a page that contains a list of all service providers for a certain subcategory.
+- ReviewPage: a page where a client rates and reviews a service provider after the request is accepted
+- BookingsAdapter: Custom adapter that populates the booking's listview
+- BookingsList: class that specifies the elements contained in each item of the booking's list
+- BookingsClient: Booking page from the client's view
+- HomeServiceProv: Home page for the service provider that contains recent ratings and reviews
+- BookingService: Booking page from the Service Provider's view
+- OfferPageService: contains all the details about a specific booking request for the service provider
+- ReviewsAdapter: populates the reviews list in the Reviews page
+- ReviewList: class that specifies the elements contained in each item of the Review's list
+- Reviews: a page where a service provider can see his/her reviews from their clients
 
 
