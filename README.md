@@ -32,6 +32,7 @@ Link up is an app that connects two types of users: clients and service provider
 - profile pictures are static
 - a page is not refreshed immediately on a database change, it might contain both old and new entries,
    unless we changed activities and go back.
+- the profile info cannot be edited once the user signed up
 
 ## Future Recommendations
 - chatting service to ease communication 
