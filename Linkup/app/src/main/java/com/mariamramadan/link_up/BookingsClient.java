@@ -133,6 +133,7 @@ public class BookingsClient extends AppCompatActivity {
                             }
                         }
 //                        BookingsArrayAdapter.notifyDataSetChanged();
+                        BookingsArrayAdapter.notifyDataSetChanged();
                         ClientsOffers.setAdapter(BookingsArrayAdapter);
 
                     }

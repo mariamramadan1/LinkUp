@@ -105,6 +105,7 @@ public class BookingService extends AppCompatActivity {
             @Override
             public void onCallbackOffers(ArrayList<Offers> OffersInfoArray)
             {
+                BookingsArrayAdapter.notifyDataSetChanged();
                 ClientsOffers.setOnItemClickListener(new AdapterView.OnItemClickListener()
                 {
                     @Override
