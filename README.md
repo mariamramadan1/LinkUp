@@ -39,7 +39,7 @@ Link up is an app that connects two types of users: clients and service provider
 - notifications to instantly notify service provider when bookings are made, and clients when bookings are accepted
 - allowing users to have profile pictures, and generally attaching photos in the app e.g. portfolio of previous work for service providers.
 
-## File Structures and activities' description
+## Files' Structure and Activities' Description
 - LogoScreen: splash screen on app start-up
 - VerifyPhoneNumber: the activity where one enters their phone number and verification code
 - AccountType: specify which user is signing up e.g. client or service provider
